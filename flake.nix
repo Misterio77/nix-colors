@@ -3,6 +3,6 @@
 
   outputs = { self }: {
     colorSchemes = import ./schemes;
-    homeManagerModules = import ./modules;
+    homeManagerModule = import ./modules;
   };
 }
