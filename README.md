@@ -95,6 +95,51 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty):
 }
 ```
 
+### Tips and tricks
+
+#### Custom scheme
+Okay, we have 200+ themes, but maybe you want to hardcode your own (or somehow dynamically generate it), no problem! You can just specify it directly:
+```nix
+{
+  nix-colors.colorscheme = {
+    slug = "pasque";
+    name = "Pasque";
+    author = "Gabriel Fontes (https://github.com/Misterio77)";
+    colors = {
+      base00 = "271C3A";
+      base01 = "100323";
+      base02 = "3E2D5C";
+      base03 = "5D5766";
+      base04 = "BEBCBF";
+      base05 = "DEDCDF";
+      base06 = "EDEAEF";
+      base07 = "BBAADD";
+      base08 = "A92258";
+      base09 = "918889";
+      base0A = "804ead";
+      base0B = "C6914B";
+      base0C = "7263AA";
+      base0D = "8E7DC6";
+      base0E = "953B9D";
+      base0F = "59325C";
+    };
+  };
+}
+```
+
+#### Listing all schemes (and registry use)
+Maybe you're working on a cool graphical menu for choosing schemes? Or want to pick a random scheme when you press a button?
+
+No problem with `nix-colors`! The fact that we expose all schemes means you can easily use `nix eval` to list schemes (or even grab and print out their colors), for all your scripting needs.
+```bash
+nix eval --raw nix-colors#colorSchemes --apply 's: builtins.concatStringsSep "\n" (builtins.attrNames s)'
+```
+
+This assumes you have nix-colors set as a nix registry. You can easily do it by passing `nix-colors` from your flake to your system configuration, and using:
+```nix
+nix.registry.nix-colors.flake = nix-colors;
+```
+
 # Thanks
 
 Special thanks to rycee for most of this repo's inspiration, plus for the amazing home-manager.
