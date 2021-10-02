@@ -1,7 +1,8 @@
 {
   slug = "gruvbox-material-light-medium";
   name = "Gruvbox Material Light, Medium";
-  author = "Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)";
+  author =
+    "Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)";
   colors = {
     base00 = "fbf1c7";
     base01 = "f2e5bc";

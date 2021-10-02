@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./colorscheme.nix
-  ];
-}
+{ imports = [ ./colorscheme.nix ]; }

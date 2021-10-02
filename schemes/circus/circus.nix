@@ -1,7 +1,8 @@
 {
   slug = "circus";
   name = "Circus";
-  author = "Stephan Boyer (https://github.com/stepchowfun) and Esther Wang (https://github.com/ewang12)";
+  author =
+    "Stephan Boyer (https://github.com/stepchowfun) and Esther Wang (https://github.com/ewang12)";
   colors = {
     base00 = "191919";
     base01 = "202020";

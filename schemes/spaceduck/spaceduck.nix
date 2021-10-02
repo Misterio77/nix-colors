@@ -1,7 +1,8 @@
 {
   slug = "spaceduck";
   name = "Spaceduck";
-  author = "Guillermo Rodriguez (https://github.com/pineapplegiant), packaged by Gabriel Fontes (https://github.com/Misterio77)";
+  author =
+    "Guillermo Rodriguez (https://github.com/pineapplegiant), packaged by Gabriel Fontes (https://github.com/Misterio77)";
   colors = {
     base00 = "16172d";
     base01 = "1b1c36";

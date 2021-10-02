@@ -1,7 +1,8 @@
 {
   slug = "uwunicorn";
   name = "UwUnicorn";
-  author = "Fernando Marques (https://github.com/RakkiUwU) and Gabriel Fontes (https://github.com/Misterio77)";
+  author =
+    "Fernando Marques (https://github.com/RakkiUwU) and Gabriel Fontes (https://github.com/Misterio77)";
   colors = {
     base00 = "241b26";
     base01 = "2f2a3f";

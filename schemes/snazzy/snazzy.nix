@@ -1,7 +1,8 @@
 {
   slug = "snazzy";
   name = "Snazzy";
-  author = "Chawye Hsu (https://github.com/chawyehsu) based on Hyper Snazzy Theme (https://github.com/sindresorhus/hyper-snazzy)";
+  author =
+    "Chawye Hsu (https://github.com/chawyehsu) based on Hyper Snazzy Theme (https://github.com/sindresorhus/hyper-snazzy)";
   colors = {
     base00 = "282a36";
     base01 = "34353e";

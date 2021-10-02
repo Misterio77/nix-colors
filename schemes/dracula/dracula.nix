@@ -1,7 +1,8 @@
 {
   slug = "dracula";
   name = "Dracula";
-  author = "Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)";
+  author =
+    "Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)";
   colors = {
     base00 = "282936";
     base01 = "3a3c4e";

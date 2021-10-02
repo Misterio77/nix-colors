@@ -1,7 +1,8 @@
 {
   slug = "espresso";
   name = "Espresso";
-  author = "Unknown. Maintained by Alex Mirrington (https://github.com/alexmirrington)";
+  author =
+    "Unknown. Maintained by Alex Mirrington (https://github.com/alexmirrington)";
   colors = {
     base00 = "2d2d2d";
     base01 = "393939";

@@ -1,7 +1,8 @@
 {
   slug = "gruvbox-light-medium";
   name = "Gruvbox light, medium";
-  author = "Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)";
+  author =
+    "Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)";
   colors = {
     base00 = "fbf1c7";
     base01 = "ebdbb2";

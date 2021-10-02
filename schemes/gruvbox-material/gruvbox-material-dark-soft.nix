@@ -1,7 +1,8 @@
 {
   slug = "gruvbox-material-dark-soft";
   name = "Gruvbox Material Dark, Soft";
-  author = "Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)";
+  author =
+    "Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)";
   colors = {
     base00 = "32302f";
     base01 = "3c3836";

@@ -24,7 +24,7 @@ base03: "686f9a" # Comments, Invisibles, Line Highlighting
 base04: "818596" # Darker Foreground
 base05: "ecf0c1" # Default Foreground
 base06: "c1c3cc" # Lighter Foreground
-base07: "ffffff" # Lighter Background 
+base07: "ffffff" # Lighter Background
 # Please make sure 00 and 05 have nice contrast
 
 # These are the accent colors
@@ -45,6 +45,8 @@ For more information on styling, check [base16's guide](https://github.com/chris
 If your scheme contains variations (such as dark or light versions), add them on the same directory together.
 
 After you're done with your scheme(s), go to the root of the repo and run `./yaml_to_nix.sh --all` to render the corresponding `.nix` versions.
+
+Ensure your `.nix` files are `nixfmt`ted (you can run `./nixfmt.sh --all`).
 
 Commit your changes, and open up a PR!
 

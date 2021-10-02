@@ -1,4 +1,4 @@
-{ 
+{
   apprentice = import ./apprentice/apprentice.nix;
 
   atelier-cave-light = import ./atelier/atelier-cave-light.nix;
@@ -107,12 +107,18 @@
   gruvbox-light-medium = import ./gruvbox/gruvbox-light-medium.nix;
   gruvbox-light-soft = import ./gruvbox/gruvbox-light-soft.nix;
 
-  gruvbox-material-dark-hard = import ./gruvbox-material/gruvbox-material-dark-hard.nix;
-  gruvbox-material-dark-medium = import ./gruvbox-material/gruvbox-material-dark-medium.nix;
-  gruvbox-material-dark-soft = import ./gruvbox-material/gruvbox-material-dark-soft.nix;
-  gruvbox-material-light-hard = import ./gruvbox-material/gruvbox-material-light-hard.nix;
-  gruvbox-material-light-medium = import ./gruvbox-material/gruvbox-material-light-medium.nix;
-  gruvbox-material-light-soft = import ./gruvbox-material/gruvbox-material-light-soft.nix;
+  gruvbox-material-dark-hard =
+    import ./gruvbox-material/gruvbox-material-dark-hard.nix;
+  gruvbox-material-dark-medium =
+    import ./gruvbox-material/gruvbox-material-dark-medium.nix;
+  gruvbox-material-dark-soft =
+    import ./gruvbox-material/gruvbox-material-dark-soft.nix;
+  gruvbox-material-light-hard =
+    import ./gruvbox-material/gruvbox-material-light-hard.nix;
+  gruvbox-material-light-medium =
+    import ./gruvbox-material/gruvbox-material-light-medium.nix;
+  gruvbox-material-light-soft =
+    import ./gruvbox-material/gruvbox-material-light-soft.nix;
 
   hardcore = import ./hardcore/hardcore.nix;
 
