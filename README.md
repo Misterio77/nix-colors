@@ -1,5 +1,8 @@
 # Nix Colors
 
+# Breaking changes:
+The home-manager option `nix-colors.colorscheme` has been renamed to just `colorscheme`.
+
 # What?
 This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration.
 
@@ -40,8 +43,8 @@ Please keep in mind this repo is WIP and its interface is subject to change (pro
 The general idea is:
 - Either add the repo to your flake inputs (and pass on `nix-colors` to your home config), or use `fetchTarball` to grab it on a legacy setup.
 - Import the module `nix-colors.homeConfigurationModule`
-- Set the option `nix-colors.colorscheme` to your preferred color scheme (such as `nix-colors.colorSchemes.dracula`)
-- Use `config.nix-colors.colorscheme.colors.base0X` to refer to any of the 16 colors from anywhere!
+- Set the option `colorscheme` to your preferred color scheme (such as `nix-colors.colorSchemes.dracula`)
+- Use `config.colorscheme.colors.base0X` to refer to any of the 16 colors from anywhere!
 
 ## Walkthrough
 
@@ -75,7 +78,7 @@ Now you can access the color schemes with `(import "${nix-colors}/schemes")`, an
 
 With that done, move to your home manager configuration.
 
-You should import the `nix-colors.homeManagerModule` (or `(import "${nix-colors}/module")`), and set the option `nix-colors.colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula` (or `(import "${nix-colors}/schemes").dracula`)
+You should import the `nix-colors.homeManagerModule` (or `(import "${nix-colors}/module")`), and set the option `colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula` (or `(import "${nix-colors}/schemes").dracula`)
 
 Here's a quick example on how to use it with, say, a terminal emulator (kitty) and a browser (qutebrowser):
 ```nix
@@ -84,9 +87,9 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
     nix-colors.homeManagerModule
   ];
 
-  nix-colors.colorscheme = nix-colors.colorSchemes.dracula;
+  colorscheme = nix-colors.colorSchemes.dracula;
 
-  programs = let colorscheme = config.nix-colors.colorscheme; in {
+  programs = let colorscheme = config.colorscheme; in {
     kitty = {
       enable = true;
       settings = {
@@ -109,7 +112,7 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
 }
 ```
 
-If you change `nix-colors.colorscheme` for anything else (say, `nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new scheme! Awesome!
+If you change `colorscheme` for anything else (say, `nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new scheme! Awesome!
 
 ## Tips and tricks
 
@@ -117,7 +120,7 @@ If you change `nix-colors.colorscheme` for anything else (say, `nix-colors.color
 Okay, we have 200+ themes, but maybe you want to hardcode your own, no problem! You can just specify it directly:
 ```nix
 {
-  nix-colors.colorscheme = {
+  colorscheme = {
     slug = "pasque";
     name = "Pasque";
     author = "Gabriel Fontes (https://github.com/Misterio77)";
@@ -163,7 +166,7 @@ You can easily create a shell script to generate a scheme you can use here!
 
 This repo includes a ready to use script (`scripts/generate_from_wallpaper.sh`, pass your wallpaper file and "dark" or "light" as arguments) for that, that uses [flavours](https://github.com/misterio77/flavours). But you can do it with pywal or any other generator.
 
-Pipe the output to a `.nix` file, and then just set your `nix-colors.colorscheme` like so:
+Pipe the output to a `.nix` file, and then just set your `colorscheme` like so:
 
 ```bash
 scripts/generate_from_wallpaper.sh /path/to/cool/wallpaper.png dark > /path/to/your/output.nix
@@ -171,7 +174,7 @@ scripts/generate_from_wallpaper.sh /path/to/cool/wallpaper.png dark > /path/to/y
 
 ```nix
 {
-  nix-colors.colorscheme = (import /path/to/your/output.nix);
+  colorscheme = (import /path/to/your/output.nix);
 }
 ```
 
