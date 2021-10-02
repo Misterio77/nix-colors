@@ -1,0 +1,31 @@
+This scheme was packaged for base16/24 on: https://github.com/alexmirrington/base16-espresso-scheme
+==
+MIT License
+
+Copyright (c) 2019 Alex Mirrington
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This license covers the base16-espresso-scheme repository.
+
+The copyright/license for each individual theme belongs to the author of that theme, as follows:
+
+The contents of espresso.yaml were adapted from the iTerm2 Espresso theme, located here: https://github.com/mbadolato/iTerm2-Color-Schemes, which was in turn ported from the original MacOS Terminal.app theme. The greyscale colours in the scheme were pulled from Chris Kempson's Tomorrow themes, located here: https://github.com/chriskempson/base16-tomorrow-scheme.
+
+The colours in decaf.yaml were created by Alex Mirrington, inspired by espresso.yaml, and the greyscale colours were pulled from Chris Kempson's Tomorrow theme, located here: https://github.com/chriskempson/base16-tomorrow-scheme.
