@@ -3,7 +3,7 @@
 with lib;
 let cfg = config.colorscheme;
 in {
-  options.nix-colors.colorscheme = mkOption {};
+  options.nix-colors.colorscheme = mkOption { default = null; };
   options.colorscheme = {
     slug = mkOption {
       type = types.str;
