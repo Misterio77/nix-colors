@@ -77,7 +77,7 @@ With that done, move to your home manager configuration.
 
 You should import the `nix-colors.homeManagerModule` (or `(import "${nix-colors}/module")`), and set the option `nix-colors.colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula` (or `(import "${nix-colors}/schemes").dracula`)
 
-Here's a quick example on how to use it with, say, a terminal emulator (kitty):
+Here's a quick example on how to use it with, say, a terminal emulator (kitty) and a browser (qutebrowser):
 ```nix
 { pkgs, config, nix-colors, ... }: {
   imports = [
@@ -86,16 +86,30 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty):
 
   nix-colors.colorscheme = nix-colors.colorSchemes.dracula;
 
-  programs.kitty = {
-    enable = true;
-    settings = let colors = config.nix-colors.colorscheme.colors; in {
-      foreground = "#${colors.base05}";
-      background = "#${colors.base00}";
-      # There's a lot more than just fg and bg...
+  programs = {
+    kitty = {
+      enable = true;
+      settings = let colorscheme = config.nix-colors.colorscheme; in {
+        foreground = "#${colorscheme.colors.base05}";
+        background = "#${colorscheme.colors.base00}";
+        # There's a lot more than just fg and bg...
+      };
+    };
+    qutebrowser = {
+      enable = true;
+      colors = {
+        # Becomes either 'dark' or 'light', based on your colors!
+        webppage.preferred_color_scheme = "${colorscheme.kind}";
+        tabs.bar.bg = "#${colorscheme.colors.base00}";
+        keyhint.fg = "#${colorscheme.colors.base05}";
+        # A lot more...
+      };
     };
   };
 }
 ```
+
+If you change `nix-colors.colorscheme` for anything else (say, `nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new scheme! Awesome!
 
 ### Tips and tricks
 
