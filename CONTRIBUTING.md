@@ -3,6 +3,8 @@
 ## Adding a new scheme
 Did you create a scheme? Or perhaps there's a scheme somewhere else you wanna use with nix-colors?
 
+**Note**: This repo is licensed under GPL, but each scheme has its own license. Only contribute schemes that are either freely licensed (GPL-compatible), or you created yourself.
+
 Start, of course, by forking the repository.
 
 Creating a scheme is very simple. Inside `schemes`, create a directory named after your scheme (using snake-case), and create a `scheme-name.yaml` (also snake-case) with this format:
