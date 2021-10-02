@@ -111,10 +111,10 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
 
 If you change `nix-colors.colorscheme` for anything else (say, `nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new scheme! Awesome!
 
-### Tips and tricks
+## Tips and tricks
 
-#### Custom scheme
-Okay, we have 200+ themes, but maybe you want to hardcode your own (or somehow dynamically generate it), no problem! You can just specify it directly:
+### Custom scheme
+Okay, we have 200+ themes, but maybe you want to hardcode your own, no problem! You can just specify it directly:
 ```nix
 {
   nix-colors.colorscheme = {
@@ -143,7 +143,7 @@ Okay, we have 200+ themes, but maybe you want to hardcode your own (or somehow d
 }
 ```
 
-#### Listing all schemes (and registry use)
+### Listing all schemes (and registry use)
 Maybe you're working on a cool graphical menu for choosing schemes? Or want to pick a random scheme when you press a button?
 
 No problem with `nix-colors`! The fact that we expose all schemes means you can easily use `nix eval` to list schemes (or even grab and print out their colors), for all your scripting needs.
@@ -158,7 +158,7 @@ This assumes you have nix-colors set as a nix registry. You can easily do it by 
 }
 ```
 
-#### Generate a scheme from wallpaper
+### Generate a scheme from wallpaper
 You can easily create a shell script to generate a scheme you can use here!
 
 This repo includes a ready to use script (`scripts/generate_from_wallpaper.sh`, pass your wallpaper file and "dark" or "light" as arguments) for that, that uses [flavours](https://github.com/misterio77/flavours). But you can do it with pywal or any other generator.
