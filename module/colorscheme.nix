@@ -3,6 +3,7 @@
 with lib;
 let cfg = config.colorscheme;
 in {
+  options.nix-colors.colorscheme = mkOption {};
   options.colorscheme = {
     slug = mkOption {
       type = types.str;
@@ -71,5 +72,10 @@ in {
         If using flakes, the picture must be inside the same repository.
       '';
     };
+  };
+  config = lib.mkIf (config.nix-colors.colorscheme != null) {
+    assertions = [
+      { assertion = false; message = "The 'nix-colors.colorscheme' option has been renamed to 'colorscheme'"; }
+    ];
   };
 }
