@@ -1,8 +1,5 @@
 # Nix Colors
 
-# Breaking changes:
-Starting with [a8215bdf](https://github.com/Misterio77/nix-colors/commit/a8215bdfac866fdb26b0fb662ae018a9dc66aa1a), the home-manager option `nix-colors.colorscheme` has been renamed to just `colorscheme`.
-
 # What?
 This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration.
 
