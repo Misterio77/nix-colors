@@ -38,8 +38,7 @@ Please keep in mind this repo is WIP and its interface is subject to change (pro
 ## TL;DR
 
 The general idea is:
-- Either add the repo to your flake inputs, or use `fetchTarball` to grab it on a legacy setup.
-- Pass `nix-colors` on to your home configuration
+- Either add the repo to your flake inputs (and pass on `nix-colors` to your home config), or use `fetchTarball` to grab it on a legacy setup.
 - Import the module `nix-colors.homeConfigurationModule`
 - Set the option `nix-colors.colorscheme` to your preferred color scheme (such as `nix-colors.colorScheme.dracula`)
 - Use `config.nix-colors.colorscheme.colors.base0X` to refer to any of the 16 colors from anywhere!
