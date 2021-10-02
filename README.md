@@ -158,6 +158,18 @@ This assumes you have nix-colors set as a nix registry. You can easily do it by 
 }
 ```
 
+#### Generate a scheme from wallpaper
+You can easily create a shell script to generate a scheme you can use here!
+
+This repo includes a ready to use script (`scripts/generate_from_wallpaper.sh`) for that, that uses [flavours](https://github.com/misterio77/flavours). But you can do it with pywal or any other generator.
+
+Pipe the output to a `.nix` file, aand then just set your `nix-colors.colorscheme` like so:
+```nix
+{
+  nix-colors.colorscheme = (import /path/to/your/output.nix);
+}
+```
+
 # Thanks
 
 Special thanks to rycee for most of this repo's inspiration, plus for the amazing home-manager.

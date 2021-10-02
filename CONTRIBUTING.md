@@ -49,11 +49,11 @@ For more information on styling, check [base16's guide](https://github.com/chris
 
 If your scheme contains variations (such as dark or light versions), add them on the same directory together.
 
-Ensure your `.nix` files are `nixfmt`ted (you can run `./nixfmt.sh --all`).
+Ensure your `.nix` files are `nixfmt`ted (you can run `./scripts/nixfmt.sh --all`).
 
 Commit your changes, and open up a PR!
 
-**PS**: If you wanna contribute this scheme to the [base16](https://github.com/chriskempson/base16) too, we have a script for that. Just run `./nix_to_yaml.sh < scheme-file.nix`, and it will be output to your stdout. You can also go the way back (maybe convert an existing yaml theme to nix), using `./yaml_to_nix.sh < scheme-file.yaml` (in this case you'll have to manually add in the slug)
+**PS**: If you wanna contribute this scheme to the [base16](https://github.com/chriskempson/base16) too, we have a script for that. Just run `./scripts/nix_to_yaml.sh < scheme-file.nix`, and it will be output to your stdout. You can also go the way back (maybe convert an existing yaml theme to nix), using `./scripts/yaml_to_nix.sh < scheme-file.yaml` (in this case you'll have to manually add in the slug)
 
 ## Suggestions or misc changes
 Feel free to open up a issue or PR if something feels not right, or if you have any questions on how to use this project!
