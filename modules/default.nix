@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./colorscheme.nix
