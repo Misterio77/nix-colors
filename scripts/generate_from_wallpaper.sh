@@ -19,7 +19,7 @@ wallpaper_basename="$(basename "$wallpaper_path")"
 
 read -r -d '' template << END
 {
-  slug = "generated-$wallpaper_basename"
+  slug = "generated-$wallpaper_basename";
   name = "Generated ($wallpaper_basename)";
   author = "{{scheme-author}}";
   colors = {
