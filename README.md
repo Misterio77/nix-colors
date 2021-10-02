@@ -103,3 +103,9 @@ Special thanks to rycee for most of this repo's inspiration, plus for the amazin
 Huge thanks for everyone involved with base16.
 
 And extra special thanks for my folks at the NixOS Brasil Telegram group, for willing to try this out!
+
+
+# Roadmap
+- Add support for base24 (which is backwards compatible with both base16 schemes and templates)
+- Add modules for pre-configured application theming
+- ???
