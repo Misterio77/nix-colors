@@ -50,10 +50,12 @@ The general idea is:
 #### Flake
 First add `nix-colors` to your flake inputs:
 ```nix
-inputs = {
-  # ...
-  nix-colors.url = "github:misterio77/nix-colors";
-};
+{
+  inputs = {
+    # ...
+    nix-colors.url = "github:misterio77/nix-colors";
+  };
+}
 ```
 
 Then, you need some way to pass this onwards to your `home-manager` configuration. You should use `extraSpecialArgs` for this (if you haven't done this before, feel free to ask for my help).
@@ -137,7 +139,9 @@ nix eval --raw nix-colors#colorSchemes --apply 's: builtins.concatStringsSep "\n
 
 This assumes you have nix-colors set as a nix registry. You can easily do it by passing `nix-colors` from your flake to your system configuration, and using:
 ```nix
-nix.registry.nix-colors.flake = nix-colors;
+{
+  nix.registry.nix-colors.flake = nix-colors;
+}
 ```
 
 # Thanks
