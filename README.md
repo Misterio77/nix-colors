@@ -86,10 +86,10 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
 
   nix-colors.colorscheme = nix-colors.colorSchemes.dracula;
 
-  programs = {
+  programs = let colorscheme = config.nix-colors.colorscheme; in {
     kitty = {
       enable = true;
-      settings = let colorscheme = config.nix-colors.colorscheme; in {
+      settings = {
         foreground = "#${colorscheme.colors.base05}";
         background = "#${colorscheme.colors.base00}";
         # There's a lot more than just fg and bg...
