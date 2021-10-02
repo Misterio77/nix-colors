@@ -23,7 +23,7 @@ Perhaps this could become a standard solution for a common problem.
 
 ## Why not use base16 listings?
 I absolutely love base16, but it's messy. The repos are very fragmented and make difficult to QA and aggregate all the schemes and templates.
-While i appreciate their work, the maintainers are the bottleneck and are often missing.
+While i appreciate their work, more maintainers are needed to keep up with PRs and improvements, and base16's creator (and [only one that can add more maintainers or move the repo to an org](https://github.com/chriskempson/base16/issues/74)) has no github activity over the last two years.
 
 This repo aims to help with that. By keeping all scheme definitions in one place, we can easily track additions and QA all added schemes, while weeding out low-quality ones.
 
@@ -33,7 +33,7 @@ We include most (if not all) of base16 schemes, including some PRs that are stil
 
 # How?
 
-Please keep in mind this repo is WIP and is subject to change. I suggest you either use flakes or pin your fetchurl incantation.
+Please keep in mind this repo is WIP and its interface is subject to change (probably won't, but no guarantees). I suggest you either use flakes for reproductibility or pin your fetchurl incantation.
 
 ## TL;DR
 
