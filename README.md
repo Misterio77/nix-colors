@@ -163,7 +163,7 @@ You can easily create a shell script to generate a scheme you can use here!
 
 This repo includes a ready to use script (`scripts/generate_from_wallpaper.sh`, pass your wallpaper file and "dark" or "light" as arguments) for that, that uses [flavours](https://github.com/misterio77/flavours). But you can do it with pywal or any other generator.
 
-Pipe the output to a `.nix` file, aand then just set your `nix-colors.colorscheme` like so:
+Pipe the output to a `.nix` file, and then just set your `nix-colors.colorscheme` like so:
 
 ```bash
 scripts/generate_from_wallpaper.sh /path/to/cool/wallpaper.png dark > /path/to/your/output.nix
