@@ -40,7 +40,7 @@ Please keep in mind this repo is WIP and its interface is subject to change (pro
 The general idea is:
 - Either add the repo to your flake inputs (and pass on `nix-colors` to your home config), or use `fetchTarball` to grab it on a legacy setup.
 - Import the module `nix-colors.homeConfigurationModule`
-- Set the option `nix-colors.colorscheme` to your preferred color scheme (such as `nix-colors.colorScheme.dracula`)
+- Set the option `nix-colors.colorscheme` to your preferred color scheme (such as `nix-colors.colorSchemes.dracula`)
 - Use `config.nix-colors.colorscheme.colors.base0X` to refer to any of the 16 colors from anywhere!
 
 ## Walkthrough
@@ -75,7 +75,7 @@ Now you can access the color schemes with `(import "${nix-colors}/schemes")`, an
 
 With that done, move to your home manager configuration.
 
-You should import the `nix-colors.homeManagerModule` (or `(import "${nix-colors}/module")`), and set the option `nix-colors.colorscheme` to your preferred scheme, such as `nix-colors.colorScheme.dracula` (or `(import "${nix-colors}/schemes").dracula`)
+You should import the `nix-colors.homeManagerModule` (or `(import "${nix-colors}/module")`), and set the option `nix-colors.colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula` (or `(import "${nix-colors}/schemes").dracula`)
 
 Here's a quick example on how to use it with, say, a terminal emulator (kitty):
 ```nix
