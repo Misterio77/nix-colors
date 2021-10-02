@@ -2,15 +2,8 @@
 #! nix-shell -p flavours -p nixfmt -i bash
 #! nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
 
-if [ "$1" = "--all" ]; then
-    schemes="schemes/**/*ml"
-else
-    schemes="$@"
-fi
-
 read -r -d '' template_contents << END
 {
-  slug = "{{scheme-slug}}";
   name = "{{scheme-name}}";
   author = "{{scheme-author}}";
   colors = {
@@ -34,6 +27,4 @@ read -r -d '' template_contents << END
 }
 END
 
-for scheme in $schemes; do
-    flavours build "$scheme" <( echo "$template_contents" ) > "${scheme%%.*}".nix
-done
+flavours build <( tee ) <( echo "$template_contents" ) | nixfmt

@@ -53,7 +53,7 @@ Ensure your `.nix` files are `nixfmt`ted (you can run `./nixfmt.sh --all`).
 
 Commit your changes, and open up a PR!
 
-**PS**: If you wanna contribute this scheme to the [base16](https://github.com/chriskempson/base16) too, we have a script for that. Just run `./scheme_to_yaml.sh schemes/schema-name/scheme-name-variant.nix`, and it will be output to your stdout.
+**PS**: If you wanna contribute this scheme to the [base16](https://github.com/chriskempson/base16) too, we have a script for that. Just run `./nix_to_yaml.sh < scheme-file.nix`, and it will be output to your stdout. You can also go the way back (maybe convert an existing yaml theme to nix), using `./yaml_to_nix.sh < scheme-file.yaml` (in this case you'll have to manually add in the slug)
 
 ## Suggestions or misc changes
 Feel free to open up a issue or PR if something feels not right, or if you have any questions on how to use this project!
