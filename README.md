@@ -1,7 +1,7 @@
 # Nix Colors
 
 # What?
-This repo is designed to help with Nix(OS) theming, employing easily importable nix attribute sets to be used as color schemes in your [home-manager](https://github.com/nix-community/home-manager) configuration.
+This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration.
 
 It fills pretty much the same usecase of my project [flavours](https://github.com/misterio77/flavours), but for your cool reproductible Nix configurations!
 
