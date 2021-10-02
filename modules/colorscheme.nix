@@ -1,8 +1,8 @@
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.colorscheme;
+let cfg = config.nix-colors.colorscheme;
 in {
-  options.colorscheme = {
+  options.nix-colors.colorscheme = {
     slug = mkOption {
       type = types.str;
       default = "";
