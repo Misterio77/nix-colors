@@ -27,6 +27,8 @@ While i appreciate their work, the maintainers are the bottleneck and are often 
 
 This repo aims to help with that. By keeping all scheme definitions in one place, we can easily track additions and QA all added schemes, while weeding out low-quality ones.
 
+We include most (if not all) of base16 schemes, including some PRs that are still waiting to be merged. Any contribution there should find its way here soon after.
+
 ---
 
 # How?
