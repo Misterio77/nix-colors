@@ -159,19 +159,52 @@ This assumes you have nix-colors set as a nix registry. You can easily do it by 
 ```
 
 ### Generate a scheme from wallpaper
-You can easily create a shell script to generate a scheme you can use here!
+You can easily use a derivation to generate a scheme from anything, including a picture.
 
-This repo includes a ready to use script (`scripts/generate_from_wallpaper.sh`, pass your wallpaper file and "dark" or "light" as arguments) for that, that uses [flavours](https://github.com/misterio77/flavours). But you can do it with pywal or any other generator.
-
-Pipe the output to a `.nix` file, and then just set your `colorscheme` like so:
-
-```bash
-scripts/generate_from_wallpaper.sh /path/to/cool/wallpaper.png dark > /path/to/your/output.nix
-```
-
+Here's an example function you can add use (of course, change the wallpaper path to whatever you use, note that with flakes they have to be in your flake repository):
 ```nix
-{
-  colorscheme = (import /path/to/your/output.nix);
+{ pkgs, config, ... }:
+let
+  colorschemeFromPicture = picture: kind: import (pkgs.stdenv.mkDerivation {
+    name = "generated-colorscheme";
+    buildInputs = with pkgs; [ flavours ];
+    unpackPhase = "true";
+    buildPhase = ''
+      template=$(cat <<-END
+      {
+        slug = "$(basename ${picture})";
+        name = "Generated";
+        author = "{{scheme-author}}";
+        colors = {
+          base00 = "{{base00-hex}}";
+          base01 = "{{base01-hex}}";
+          base02 = "{{base02-hex}}";
+          base03 = "{{base03-hex}}";
+          base04 = "{{base04-hex}}";
+          base05 = "{{base05-hex}}";
+          base06 = "{{base06-hex}}";
+          base07 = "{{base07-hex}}";
+          base08 = "{{base08-hex}}";
+          base09 = "{{base09-hex}}";
+          base0A = "{{base0A-hex}}";
+          base0B = "{{base0B-hex}}";
+          base0C = "{{base0C-hex}}";
+          base0D = "{{base0D-hex}}";
+          base0E = "{{base0E-hex}}";
+          base0F = "{{base0F-hex}}";
+        };
+      }
+      END
+      )
+
+      flavours generate "${kind}" "${picture}" --stdout | \
+      flavours build <( tee ) <( echo "$template" ) > default.nix
+    '';
+    installPhase = "mkdir -p $out && cp default.nix $out";
+  });
+in {
+  colorscheme = colorschemeFromPicture ./wallpapers/example.png "dark";
+  # ...
 }
 ```
 
