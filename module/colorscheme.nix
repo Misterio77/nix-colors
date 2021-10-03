@@ -63,15 +63,6 @@ in {
       "base0E"
       "base0F"
     ]);
-
-    generateFromPicture = mkOption {
-      type = types.nullOr types.path;
-      default = null;
-      description = ''
-        If set, generates a scheme using the given picture.
-        If using flakes, the picture must be inside the same repository.
-      '';
-    };
   };
   config = lib.mkIf (config.nix-colors.colorscheme != null) {
     assertions = [
