@@ -1,9 +1,9 @@
 # Nix Colors
 
 # What?
-This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration.
+This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration. We also include two lib functions: one for generating a stylish nix wallpaper, and another for generating a colorscheme from any image!
 
-It fills pretty much the same usecase of my project [flavours](https://github.com/misterio77/flavours), but for your cool reproductible Nix configurations!
+It fills pretty much the same usecase of my project [flavours](https://github.com/misterio77/flavours) (and uses it internally), but for your cool reproductible Nix configurations!
 
 ## What is base16?
 [Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates). For now we'll just hand you the schemes and let you handle how to use each color. I plan on delivering simple templates as modules soon(tm).
@@ -143,7 +143,7 @@ Okay, we have 200+ themes, but maybe you want to hardcode your own, no problem! 
 }
 ```
 
-### Listing all schemes (and registry use)
+### Listing all schemes (and registry usage)
 Maybe you're working on a cool graphical menu for choosing schemes? Or want to pick a random scheme when you press a button?
 
 No problem with `nix-colors`! The fact that we expose all schemes means you can easily use `nix eval` to list schemes (or even grab and print out their colors), for all your scripting needs.
@@ -161,52 +161,46 @@ This assumes you have nix-colors set as a nix registry. You can easily do it by 
 ### Generate a scheme from wallpaper
 You can easily use a derivation to generate a scheme from anything, including a picture.
 
-Here's an example function you can add use (of course, change the wallpaper path to whatever you use, note that with flakes they have to be in your flake repository):
+As it's a common usecase, we include a lib function to do just that. Simply call `nix-colors.lib` (passing your pkgs attribute), and it's at your disposal:
 ```nix
-{ pkgs, config, ... }:
-let
-  colorschemeFromPicture = picture: kind: import (pkgs.stdenv.mkDerivation {
-    name = "generated-colorscheme";
-    buildInputs = with pkgs; [ flavours ];
-    unpackPhase = "true";
-    buildPhase = ''
-      template=$(cat <<-END
-      {
-        slug = "$(basename ${picture})";
-        name = "Generated";
-        author = "{{scheme-author}}";
-        colors = {
-          base00 = "{{base00-hex}}";
-          base01 = "{{base01-hex}}";
-          base02 = "{{base02-hex}}";
-          base03 = "{{base03-hex}}";
-          base04 = "{{base04-hex}}";
-          base05 = "{{base05-hex}}";
-          base06 = "{{base06-hex}}";
-          base07 = "{{base07-hex}}";
-          base08 = "{{base08-hex}}";
-          base09 = "{{base09-hex}}";
-          base0A = "{{base0A-hex}}";
-          base0B = "{{base0B-hex}}";
-          base0C = "{{base0C-hex}}";
-          base0D = "{{base0D-hex}}";
-          base0E = "{{base0E-hex}}";
-          base0F = "{{base0F-hex}}";
-        };
-      }
-      END
-      )
+{ pkgs, config, nix-colors, ... }:
 
-      flavours generate "${kind}" "${picture}" --stdout | \
-      flavours build <( tee ) <( echo "$template" ) > default.nix
-    '';
-    installPhase = "mkdir -p $out && cp default.nix $out";
-  });
-in {
-  colorscheme = colorschemeFromPicture ./wallpapers/example.png "dark";
-  # ...
+# This will bring colorschemeFromPicture into scope
+with nix-colors.lib { inherit pkgs; };
+{
+  colorscheme = colorschemeFromPicture {
+    path = ./wallpapers/example.png;
+    kind = "light";
+  };
 }
 ```
+All done, just use `config.colorscheme` as usual!
+
+### Generate a wallpaper from a scheme
+Of course, you can go the other way around too. You can easily use your chosen colorscheme in any sort of derivations.
+
+We include a lib function for generating a stylish nix-themed wallpaper matching your scheme. As above, call `nix-colors.lib { inherit pkgs; }`, and use the lib this way:
+```nix
+{ pkgs, config, nix-colors, ... }:
+
+# This will bring nixWallpaperFromScheme into scope
+with nix-colors.lib { inherit pkgs; };
+{
+  colorscheme = nix-colors.colorSchemes.tokyonight;
+
+  wallpaper = nixWallpaperFromScheme {
+    scheme = config.colorscheme;
+    width = 1920;
+    height = 1080;
+    logoScale = 4.0;
+  };
+}
+```
+This assumes you have an [option named wallpaper](https://github.com/Misterio77/nix-config/blob/7aef57a5a84a176da872665ade96f9ab586474db/modules/home-manager/wallpaper.nix), of course. If so, you can then use `config.wallpaper` wherever you need to you use your wallpaper.
+
+If you don't, just make `wallpaper` a `let` binding instead, or ust use `nixWallpaperFromScheme` directly where it'll be used.
+
+[Here's example usage](https://github.com/Misterio77/nix-config/blob/3d2da71578b930ea065a61a73fc26155482ab438/users/misterio/rice.nix) for both this and scheme generation.
 
 # Thanks
 

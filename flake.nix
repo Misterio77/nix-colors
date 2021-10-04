@@ -1,9 +1,11 @@
 {
   description =
-    "Collection of nix-compatible color schemes, and a home-manager module to make theming theming easier.";
+    "Collection of nix-compatible color schemes, and a home-manager module to make theming easier.";
 
   outputs = { self }: {
+    lib = import ./lib;
     colorSchemes = import ./schemes;
-    homeManagerModule = import ./module;
+    homeManagerModules.colorscheme = import ./module;
+    homeManagerModule = self.homeManagerModules.colorscheme;
   };
 }
