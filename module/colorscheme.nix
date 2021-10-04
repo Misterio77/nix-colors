@@ -65,8 +65,10 @@ in {
     ]);
   };
   config = lib.mkIf (config.nix-colors.colorscheme != null) {
-    assertions = [
-      { assertion = false; message = "The 'nix-colors.colorscheme' option has been renamed to 'colorscheme'"; }
-    ];
+    assertions = [{
+      assertion = false;
+      message =
+        "The 'nix-colors.colorscheme' option has been renamed to 'colorscheme'";
+    }];
   };
 }
