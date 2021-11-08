@@ -1,3 +1,4 @@
+#!/usr/bin/env nix-shell
 #! nix-shell -p flavours -p nixfmt -i bash
 #! nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
 
