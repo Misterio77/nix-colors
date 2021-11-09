@@ -4,6 +4,7 @@
 apprentice: https://github.com/casonadams/base16-apprentice-scheme
 atelier: https://github.com/atelierbram/base16-atelier-schemes
 atlas: https://github.com/ajlende/base16-atlas-scheme
+ayu: https://github.com/Z5483/base16-ayu-scheme
 black-metal: https://github.com/metalelf0/base16-black-metal-scheme
 blueish: https://github.com/TheMayoras/base16-blueish-scheme
 brushtrees: https://github.com/WhiteAbeLincoln/base16-brushtrees-scheme
@@ -33,7 +34,7 @@ gruvbox-material: https://github.com/MayushKumar/base16-gruvbox-material-scheme
 hardcore: https://github.com/callerc1/base16-hardcore-scheme
 heetch: https://github.com/tealeg/base16-heetch-scheme
 helios: https://github.com/reyemxela/base16-helios-scheme
-horizon: https://github.com/michael-ball/base16-horizon-scheme
+horizon: https://git.michaelball.name/base16-horizon-scheme
 humanoid: https://github.com/humanoid-colors/base16-humanoid-schemes
 ia: https://github.com/aramisgithub/base16-ia-scheme
 icy: https://github.com/icyphox/base16-icy-scheme
@@ -72,8 +73,10 @@ spaceduck: https://github.com/Misterio77/base16-spaceduck-scheme
 stella: https://github.com/Shrimpram/base16-stella-scheme
 summercamp: https://github.com/zoefiri/base16-summercamp
 summerfruit: https://github.com/cscorley/base16-summerfruit-scheme
-synth-midnight: https://github.com/michael-ball/base16-synth-midnight-scheme
+synth-midnight: https://git.michaelball.name/base16-synth-midnight-scheme
 tender: https://github.com/DanManN/base16-tender-scheme
+tokyo-city: https://git.michaelball.name/gid/base16-tokyo-city-scheme
+tokyo-night: https://git.michaelball.name/gid/base16-tokyo-night-scheme
 tokyonight: https://github.com/arcticlimer/base16-tokyonight-scheme
 tomorrow: https://github.com/chriskempson/base16-tomorrow-scheme
 twilight: https://github.com/hartbit/base16-twilight-scheme

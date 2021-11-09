@@ -1,6 +1,6 @@
 {
   slug = "horizon-terminal-light";
-  name = "Horizon Light";
+  name = "Horizon Terminal Light";
   author = "Michaël Ball (http://github.com/michael-ball/)";
   colors = {
     base00 = "FDF0ED";

@@ -1,6 +1,6 @@
 {
   slug = "horizon-terminal-dark";
-  name = "Horizon Dark";
+  name = "Horizon Terminal Dark";
   author = "Michaël Ball (http://github.com/michael-ball/)";
   colors = {
     base00 = "1C1E26";
