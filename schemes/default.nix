@@ -24,6 +24,10 @@
 
   atlas = import ./atlas/atlas.nix;
 
+  ayu-dark = import ./ayu/ayu-dark.nix;
+  ayu-light = import ./ayu/ayu-light.nix;
+  ayu-mirage = import ./ayu/ayu-mirage.nix;
+
   black-metal-bathory = import ./black-metal/black-metal-bathory.nix;
   black-metal-burzum = import ./black-metal/black-metal-burzum.nix;
   black-metal-dark-funeral = import ./black-metal/black-metal-dark-funeral.nix;
@@ -83,7 +87,6 @@
   equilibrium-light = import ./equilibrium/equilibrium-light.nix;
 
   decaf = import ./espresso/decaf.nix;
-
   espresso = import ./espresso/espresso.nix;
 
   eva-dim = import ./eva/eva-dim.nix;
@@ -107,18 +110,12 @@
   gruvbox-light-medium = import ./gruvbox/gruvbox-light-medium.nix;
   gruvbox-light-soft = import ./gruvbox/gruvbox-light-soft.nix;
 
-  gruvbox-material-dark-hard =
-    import ./gruvbox-material/gruvbox-material-dark-hard.nix;
-  gruvbox-material-dark-medium =
-    import ./gruvbox-material/gruvbox-material-dark-medium.nix;
-  gruvbox-material-dark-soft =
-    import ./gruvbox-material/gruvbox-material-dark-soft.nix;
-  gruvbox-material-light-hard =
-    import ./gruvbox-material/gruvbox-material-light-hard.nix;
-  gruvbox-material-light-medium =
-    import ./gruvbox-material/gruvbox-material-light-medium.nix;
-  gruvbox-material-light-soft =
-    import ./gruvbox-material/gruvbox-material-light-soft.nix;
+  gruvbox-material-dark-hard = import ./gruvbox-material/gruvbox-material-dark-hard.nix;
+  gruvbox-material-dark-medium = import ./gruvbox-material/gruvbox-material-dark-medium.nix;
+  gruvbox-material-dark-soft = import ./gruvbox-material/gruvbox-material-dark-soft.nix;
+  gruvbox-material-light-hard = import ./gruvbox-material/gruvbox-material-light-hard.nix;
+  gruvbox-material-light-medium = import ./gruvbox-material/gruvbox-material-light-medium.nix;
+  gruvbox-material-light-soft = import ./gruvbox-material/gruvbox-material-light-soft.nix;
 
   hardcore = import ./hardcore/hardcore.nix;
 
@@ -226,6 +223,18 @@
   synth-midnight-light = import ./synth-midnight/synth-midnight-light.nix;
 
   tender = import ./tender/tender.nix;
+
+  tokyo-city-dark = import ./tokyo-city/tokyo-city-dark.nix;
+  tokyo-city-light = import ./tokyo-city/tokyo-city-light.nix;
+  tokyo-city-terminal-dark = import ./tokyo-city/tokyo-city-terminal-dark.nix;
+  tokyo-city-terminal-light = import ./tokyo-city/tokyo-city-terminal-light.nix;
+
+  tokyo-night-dark = import ./tokyo-night/tokyo-night-dark.nix;
+  tokyo-night-light = import ./tokyo-night/tokyo-night-light.nix;
+  tokyo-night-storm = import ./tokyo-night/tokyo-night-storm.nix;
+  tokyo-night-terminal-dark = import ./tokyo-night/tokyo-night-terminal-dark.nix;
+  tokyo-night-terminal-light = import ./tokyo-night/tokyo-night-terminal-light.nix;
+  tokyo-night-terminal-storm = import ./tokyo-night/tokyo-night-terminal-storm.nix;
 
   tokyonight = import ./tokyonight/tokyonight.nix;
 
