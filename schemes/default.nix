@@ -215,6 +215,8 @@
 
   stella = import ./stella/stella.nix;
 
+  still-alive = import ./still-alive/still-alive.nix;
+
   summercamp = import ./summercamp/summercamp.nix;
   summerfruit-dark = import ./summerfruit/summerfruit-dark.nix;
   summerfruit-light = import ./summerfruit/summerfruit-light.nix;
