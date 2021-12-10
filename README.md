@@ -202,6 +202,27 @@ If you don't, just make `wallpaper` a `let` binding instead, or ust use `nixWall
 
 [Here's example usage](https://github.com/Misterio77/nix-config/blob/3d2da71578b930ea065a61a73fc26155482ab438/users/misterio/rice.nix) for both this and scheme generation.
 
+### Generate a GTK theme from a scheme
+We also include a lib function for generating a (Materia based, maybe more options in the future) GTK (plus gnome shell and cinnamon) theme from a scheme.
+
+Just call our lib same as above, and use `gtkThemeFromScheme`:
+
+```nix
+{ pkgs, config, nix-colors, ... }:
+
+with nix-colors.lib { inherit pkgs; };
+{
+  colorscheme = nix-colors.colorSchemes.spaceduck;
+
+  gtk.theme = {
+    name = "${config.colorscheme.slug}";
+    package = gtkThemeFromScheme {
+      scheme = config.colorscheme;
+    };
+  };
+}
+```
+
 # Thanks
 
 Special thanks to rycee for most of this repo's inspiration, plus for the amazing home-manager.
