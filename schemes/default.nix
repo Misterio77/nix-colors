@@ -45,6 +45,8 @@
   brushtrees-dark = import ./brushtrees/brushtrees-dark.nix;
   brushtrees = import ./brushtrees/brushtrees.nix;
 
+  catppuccin = import ./catppuccin/catppuccin.nix;
+
   circus = import ./circus/circus.nix;
 
   classic-dark = import ./classic/classic-dark.nix;
