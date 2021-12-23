@@ -65,7 +65,7 @@ in
       buildPhase = ''
         template=$(cat <<-END
         {
-          slug = "$(basename ${path})-${kind}";
+          slug = "$(basename ${path} | cut -d '.' -f1)-${kind}";
           name = "Generated";
           author = "nix-colors";
           colors = {
