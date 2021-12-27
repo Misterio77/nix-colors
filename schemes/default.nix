@@ -40,6 +40,7 @@
   black-metal-venom = import ./black-metal/black-metal-venom.nix;
   black-metal = import ./black-metal/black-metal.nix;
 
+  blueforest = import ./blueforest/blueforest.nix;
   blueish = import ./blueish/blueish.nix;
 
   brushtrees-dark = import ./brushtrees/brushtrees-dark.nix;
@@ -241,7 +242,7 @@
   tokyo-night-terminal-storm = import ./tokyo-night/tokyo-night-terminal-storm.nix;
 
   tokyonight = import ./tokyonight/tokyonight.nix;
-  
+
   tokyodark = import ./tokyodark/tokyodark.nix;
 
   tomorrow-night-eighties = import ./tomorrow/tomorrow-night-eighties.nix;
