@@ -245,6 +245,7 @@
   tokyodark = import ./tokyodark/tokyodark.nix;
   tokyodark-terminal = import ./tokyodark/tokyodark-terminal.nix;
 
+
   tomorrow-night-eighties = import ./tomorrow/tomorrow-night-eighties.nix;
   tomorrow-night = import ./tomorrow/tomorrow-night.nix;
   tomorrow = import ./tomorrow/tomorrow.nix;
