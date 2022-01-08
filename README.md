@@ -1,7 +1,7 @@
 # Nix Colors
 
 # What?
-This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration. We also include two lib functions: one for generating a stylish nix wallpaper, and another for generating a colorscheme from any image!
+This repo is designed to help with Nix(OS) theming, exposing a nix attribute set with 204+ themes to be used as you wish. As well as a [home-manager](https://github.com/nix-community/home-manager) module you can import to globally set your scheme across your entire configuration. We also include four lib functions: for generating a stylish nix wallpaper, for generating a colorscheme from any image, for generating a vim colorscheme, and for a GTK theme!
 
 It fills pretty much the same usecase of my project [flavours](https://github.com/misterio77/flavours) (and uses it internally), but for your cool reproductible Nix configurations!
 
@@ -158,6 +158,8 @@ This assumes you have nix-colors set as a nix registry. You can easily do it by 
 }
 ```
 
+## Lib functions usage
+
 ### Generate a scheme from wallpaper
 You can easily use a derivation to generate a scheme from anything, including a picture.
 
@@ -220,6 +222,25 @@ with nix-colors.lib { inherit pkgs; };
       scheme = config.colorscheme;
     };
   };
+}
+```
+
+### Vim colorscheme from scheme
+We also have a lib function for a (neo)vim colorscheme.
+
+Same as before, call our lib and add the package to `programs.vim.plugins` or `programs.neovim.plugins` (optionally, add `colorscheme nix-${slug}` to your config so the colorscheme applies on startup):
+```nix
+{ pkgs, config, nix-colors, ... }:
+
+with nix-colors.lib { inherit pkgs; };
+
+{
+  programs.neovim.plugins = [
+    {
+      plugin = vimThemeFromScheme { scheme = config.colorscheme; };
+      config = "colorscheme nix-${config.colorscheme.slug}";
+    }
+  ];
 }
 ```
 
