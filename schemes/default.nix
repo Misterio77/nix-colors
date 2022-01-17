@@ -95,6 +95,8 @@
   eva-dim = import ./eva/eva-dim.nix;
   eva = import ./eva/eva.nix;
 
+  everforest = import ./everforest/everforest.nix;
+
   framer = import ./framer/framer.nix;
 
   fruit-soda = import ./fruit-soda/fruit-soda.nix;
