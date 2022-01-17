@@ -7,7 +7,7 @@
     base01 = "323c41";
     base02 = "3a4248";
     base03 = "868d80";
-    base04 = "d3c6aa";
+    base04 = "a59572";
     base05 = "d3c6aa";
     base06 = "e9e8d2";
     base07 = "fff9e8";
