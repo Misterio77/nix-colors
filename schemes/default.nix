@@ -144,6 +144,8 @@
 
   katy = import ./katy/katy.nix;
 
+  kanagawa = import ./kanagawa/kanagawa.nix;
+
   kimber = import ./kimber/kimber.nix;
 
   emil = import ./limelight/emil.nix;
