@@ -1,7 +1,7 @@
 {
   slug = "kanagawa";
   name = "Kanagawa";
-  author = "rebelot";
+  author = "Tommaso Laurenzi (https://github.com/rebelot)";
   colors = {
     base00 = "1F1F28";
     base01 = "16161D";
