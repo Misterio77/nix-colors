@@ -1,5 +1,5 @@
 {
-  slug = "Kanagawa";
+  slug = "kanagawa";
   name = "Kanagawa";
   author = "rebelot";
   colors = {
