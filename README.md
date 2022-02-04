@@ -43,11 +43,11 @@ nix-channel --add https://github.com/misterio77/nix-colors/archive/main.tar.gz n
 nix-channel --update
 ```
 
-Then, at the top of your config file(s) add `nix-colors ? <nix-colors>` as arguments (instead of just `nix-colors`).
+Then, at the top of your config file(s) add `nix-colors ? <nix-colors>` as an argument (instead of just `nix-colors`).
 
 ## Using
 
-With that done, move to your home manager configuration.
+With that done, move on to your home manager configuration.
 
 You should import the `nix-colors.homeManagerModule`, and set the option `colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula`
 
@@ -66,7 +66,7 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
       settings = {
         foreground = "#${config.colorscheme.colors.base05}";
         background = "#${config.colorscheme.colors.base00}";
-        # There's a lot more than just fg and bg...
+        # ...
       };
     };
     qutebrowser = {
@@ -76,7 +76,7 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
         webppage.preferred_color_scheme = "${config.colorscheme.kind}";
         tabs.bar.bg = "#${config.colorscheme.colors.base00}";
         keyhint.fg = "#${config.colorscheme.colors.base05}";
-        # A lot more...
+        # ...
       };
     };
   };
