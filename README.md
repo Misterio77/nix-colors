@@ -24,8 +24,8 @@ Perhaps this could become a standard solution for a common problem.
 # Setup
 
 The usual setup looks like this:
-- Either add the repo to your flake inputs (and pass on `nix-colors` to your home config), or use `fetchTarball` to grab it on a legacy setup.
-- Import the home-manager modulemodule `nix-colors.homeManagerModule`
+- Either add the repo to your flake inputs, or add the channel on a legacy setup.
+- Import the home-manager module `nix-colors.homeManagerModule`
 - Set the option `colorscheme` to your preferred color scheme (such as `nix-colors.colorSchemes.dracula`)
 - Use `config.colorscheme.colors.base0X` to refer to any of the 16 colors from anywhere!
 
