@@ -33,18 +33,17 @@ First add `nix-colors` to your flake inputs:
 }
 ```
 
-Then, you need some way to pass this onwards to your `home-manager` configuration. You should use `extraSpecialArgs` for this (if you haven't done this before, feel free to ask for my help).
-
-Once you do, you can access the color schemes with `nix-colors.colorSchemes`, and the `home-manager` module with `nix-colors.homeManagerModule`.
+Then, you need some way to pass this onwards to your `home-manager` configuration. You should use `extraSpecialArgs` for this, for example:
 
 
 ### Legacy (non-flake)
-If you're not using flakes, just go to the top of your configuration and add:
-```nix
-let nix-colors = import (builtins.fetchTarball "https://github.com/misterio77/nix-colors/archive/main.tar.gz");
+If you're not using flakes, the most convenient method is adding nix-colors to your channels:
+```
+nix-channel --add https://github.com/misterio77/nix-colors/archive/main.tar.gz nix-colors
+nix-channel --update
 ```
 
-Same as with flakes, you can access the color schemes with `nix-colors.colorSchemes`, and the `home-manager` module with `nix-colors.homeManagerModule`.
+Then, at the top of your config file(s) add `nix-colors ? <nix-colors>` as arguments (instead of just `nix-colors`).
 
 ## Using
 
@@ -135,6 +134,9 @@ This assumes you have nix-colors set as a nix registry. You can easily do it by 
   nix.registry.nix-colors.flake = nix-colors;
 }
 ```
+
+It is quite nice to add all your flake inputs as system registries, [here's an example on how to do it](https://github.com/Misterio77/nix-starter-config/blob/minimal/configuration.nix#L67).
+
 # Thanks
 
 Special thanks to rycee for most of this repo's inspiration, plus for the amazing home-manager.
