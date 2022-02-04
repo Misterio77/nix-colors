@@ -42,7 +42,27 @@ First add `nix-colors` to your flake inputs:
 }
 ```
 
-Then, you need some way to pass this onwards to your `home-manager` configuration. You should use `extraSpecialArgs` for this, for example:
+Then, you need some way to pass this onwards to your `home-manager` configuration.
+
+If you're using standalone home-manager, use `extraSpecialArgs` for this:
+```nix
+homeConfigurations = {
+  "foo@bar" = home-manager.lib.homeManagerConfiguration {
+    # ...
+    extraSpecialArgs = { inherit nix-colors; };
+  };
+};
+```
+
+Or, if using it as a NixOS module, use `specialArgs` on your flake (and `extraSpecialArgs` wherever you import your home nix file):
+```nix
+nixosConfigurations = {
+  bar = nixpkgs.lib.nixosSystem {
+    # ...
+    specialArgs = { inherit nix-colors; };
+  };
+};
+```
 
 
 ### Legacy (non-flake)
