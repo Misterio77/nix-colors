@@ -40,17 +40,17 @@ Once you do, you can access the color schemes with `nix-colors.colorSchemes`, an
 
 ### Legacy (non-flake)
 If you're not using flakes, just go to the top of your configuration and add:
-```
-let nix-colors = builtins.fetchTarball "https://github.com/misterio77/nix-colors/archive/main.tar.gz";
+```nix
+let nix-colors = import (builtins.fetchTarball "https://github.com/misterio77/nix-colors/archive/main.tar.gz");
 ```
 
-Now you can access the color schemes with `(import "${nix-colors}/schemes")`, and the `home-manager` module with `(import "${nix-colors}/module")`.
+Same as with flakes, you can access the color schemes with `nix-colors.colorSchemes`, and the `home-manager` module with `nix-colors.homeManagerModule`.
 
 ## Using
 
 With that done, move to your home manager configuration.
 
-You should import the `nix-colors.homeManagerModule` (or `(import "${nix-colors}/module")`), and set the option `colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula` (or `(import "${nix-colors}/schemes").dracula`)
+You should import the `nix-colors.homeManagerModule`, and set the option `colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula`
 
 Here's a quick example on how to use it with, say, a terminal emulator (kitty) and a browser (qutebrowser):
 ```nix
