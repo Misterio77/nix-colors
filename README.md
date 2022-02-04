@@ -12,6 +12,15 @@ Plus some other goodies:
 ## Base16?
 [Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates). For now we'll just hand you the schemes and let you handle how to use each color. I plan on delivering simple base templates as modules soon(tm).
 
+## Existing solutions?
+Nix is amazing and lets people do stuff their way, so people end up with lots of different (often incompatible) solutions to the same problem.
+
+Theming is one of them. Based on [rycee's](https://gitlab.com/rycee/nur-expressions/-/tree/master/hm-modules/theme-base16), some of my experience with creating a [base16 theming workflow](https://github.com/misterio77/flavours), and a demand for a easy way to expose multiple schemes, i decided to create this.
+
+Perhaps this could become a standard solution for a common problem.
+
+![relevant xkcd](https://imgs.xkcd.com/comics/standards.png)
+
 # Setup
 
 The usual setup looks like this:
