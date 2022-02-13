@@ -10,7 +10,7 @@ Plus some optional [functions](lib-usage.md) for common use cases (generating sc
 ## Base16?
 [Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates).
 
-nix-colors focuses on delivering you the schemes, with their usage being easy, flexible, and unopinionated.
+nix-colors focuses on delivering you just the schemes, while being easy to use, flexible, and unopinionated.
 
 ## Existing solutions?
 Nix is amazing and lets people do stuff their way, so people end up with lots of different (often incompatible) solutions to the same problem.
