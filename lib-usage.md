@@ -18,7 +18,7 @@ with nix-colors.lib { inherit pkgs; };
 ```
 All done, just use `config.colorscheme` as usual!
 
-### Generate a wallpaper from a scheme
+## Generate a wallpaper from a scheme
 Of course, you can go the other way around too. You can easily use your chosen colorscheme in any sort of derivations.
 
 Our lib function generates a stylish nix-themed wallpaper matching your scheme.
@@ -41,7 +41,7 @@ This assumes you have an [option named wallpaper](https://github.com/Misterio77/
 
 If you don't, just make `wallpaper` a `let` binding instead, or ust use `nixWallpaperFromScheme` directly where it'll be used.
 
-### Generate a GTK theme from a scheme
+## Generate a GTK theme from a scheme
 We also include a lib function for generating a (Materia based, maybe there'll be more options in the future) GTK theme from a scheme.
 ```nix
 { pkgs, config, nix-colors, ... }:
@@ -59,7 +59,7 @@ with nix-colors.lib { inherit pkgs; };
 }
 ```
 
-### Vim colorscheme from scheme
+## Vim colorscheme from scheme
 We also have a lib function for a (neo)vim colorscheme.
 
 Same as before, call our lib and add the package to `programs.vim.plugins` or `programs.neovim.plugins` like this (the `colorscheme` setting applies it on startup, you can [use neovim remote](https://github.com/Misterio77/nix-config/blob/main/users/misterio/features/cli/nvim/default.nix#L82) to re-source your config when it's updated):
