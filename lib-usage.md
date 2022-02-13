@@ -1,6 +1,6 @@
 # Lib functions usage
 
-Here's a few of our lib functions documented. They're designed to be optional convenience for some common scheme usage.
+Here's a few of our lib functions documented. They're designed to be fully optional convenience for some common scheme usage.
 
 ## Generate a scheme from wallpaper
 Simply call `nix-colors.lib` (passing your `pkgs`), and use it like this:
@@ -8,8 +8,9 @@ Simply call `nix-colors.lib` (passing your `pkgs`), and use it like this:
 ```nix
 { pkgs, config, nix-colors, ... }:
 
-with nix-colors.lib { inherit pkgs; };
-{
+let
+  inherit (nix-colors.lib { inherit pkgs; }) colorschemeFromPicture;
+in {
   colorscheme = colorschemeFromPicture {
     path = ./wallpapers/example.png;
     kind = "light";
@@ -25,8 +26,9 @@ Our lib function generates a stylish nix-themed wallpaper matching your scheme.
 ```nix
 { pkgs, config, nix-colors, ... }:
 
-with nix-colors.lib { inherit pkgs; };
-{
+let
+  inherit (nix-colors.lib { inherit pkgs; }) nixWallpaperFromScheme;
+in {
   colorscheme = nix-colors.colorSchemes.tokyonight;
 
   wallpaper = nixWallpaperFromScheme {
@@ -46,8 +48,9 @@ We also include a lib function for generating a (Materia based, maybe there'll b
 ```nix
 { pkgs, config, nix-colors, ... }:
 
-with nix-colors.lib { inherit pkgs; };
-{
+let
+  inherit (nix-colors.lib { inherit pkgs; }) gtkThemeFromScheme;
+in {
   colorscheme = nix-colors.colorSchemes.spaceduck;
 
   gtk.theme = {
@@ -66,9 +69,9 @@ Same as before, call our lib and add the package to `programs.vim.plugins` or `p
 ```nix
 { pkgs, config, nix-colors, ... }:
 
-with nix-colors.lib { inherit pkgs; };
-
-{
+let
+  inherit (nix-colors.lib { inherit pkgs; }) vimThemeFromScheme;
+in {
   programs.neovim.plugins = [
     {
       plugin = vimThemeFromScheme { scheme = config.colorscheme; };
