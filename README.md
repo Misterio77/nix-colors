@@ -3,11 +3,9 @@
 # About
 This repo is designed to help with Nix(OS) theming.
 
-The core feature is an attribute set with 220+ base16 themes to be used as you wish.
+At the core, we have an attribute set with 220+ base16 schemes, as well as a [home-manager](https://github.com/nix-community/home-manager) module for globally setting your preferred one.
 
-Plus some other goodies:
-- A [home-manager](https://github.com/nix-community/home-manager) module for globally setting your scheme across your configuration
-- Lib function for generating a scheme from an image (usually your wallpaper), as well as functions for a few common usecases (generating a wallpaper, vim scheme, gtk theme). These are pretty much "addons", being opinionated but fully optional.
+Plus some optional (opinionated) [functions](lib-usage.md) for common use cases (generating scheme from image, generating wallpaper, vim scheme, gtk theme).
 
 ## Base16?
 [Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates). For now we'll just hand you the schemes and let you handle how to use each color. I plan on delivering simple base templates as modules soon(tm).
