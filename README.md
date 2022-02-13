@@ -8,7 +8,9 @@ At the core, we have an attribute set with 220+ base16 schemes, as well as a [ho
 Plus some optional [functions](lib-usage.md) for common use cases (generating scheme from image, generating wallpaper, vim scheme, gtk theme).
 
 ## Base16?
-[Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates). nix-colors focuses on delivering you the schemes, with their usage being easy, flexible, and unopinionated (you can set options to them, generate derivations from them, anything really). For a few more complex use cases, we also have opinionated functions, which are fully optional.
+[Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates).
+
+nix-colors focuses on delivering you the schemes, with their usage being easy, flexible, and unopinionated.
 
 ## Existing solutions?
 Nix is amazing and lets people do stuff their way, so people end up with lots of different (often incompatible) solutions to the same problem.
