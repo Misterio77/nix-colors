@@ -1,6 +1,8 @@
 # Lib functions usage
 
-Here's a few of our lib functions documented. They're designed to be fully optional convenience for some common scheme usage.
+Here's a few of our lib functions documented. While nix-colors is unopionionated, the lib functions are designed as (sort of "contrib") opinionated addons for use cases most people would write similar code.
+
+If you're interested in sharing code you wrote for creating stuff from schemes, feel free to open up a PR. As these are optional, the entry barrier is very low.
 
 ## Generate a scheme from wallpaper
 Simply call `nix-colors.lib` (passing your `pkgs`), and use it like this:
