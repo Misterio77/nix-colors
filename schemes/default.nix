@@ -178,6 +178,9 @@
 
   pandora = import ./pandora/pandora.nix;
 
+  papercolor-dark = import ./papercolor/papercolor-dark.nix;
+  papercolor-light = import ./papercolor/papercolor-light.nix;
+ 
   pasque = import ./pasque/pasque.nix;
 
   pinky = import ./pinky/pinky.nix;
