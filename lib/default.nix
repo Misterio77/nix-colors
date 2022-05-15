@@ -41,4 +41,15 @@
   #   }
   # ];
   vimThemeFromScheme = import ./vim-theme.nix { inherit pkgs; };
+
+  # Takes a scheme, ouputs a fish theme plugin.
+  #
+  # Example:
+  # programs.fish.plugins = [
+  #   {
+  #     name = "nix-base16";
+  #     src = fishThemeFromScheme { scheme = config.colorscheme; };
+  #   }
+  # ];
+  fishThemeFromScheme = import ./fish-theme.nix { inherit pkgs; };
 }

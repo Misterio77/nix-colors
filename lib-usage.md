@@ -82,3 +82,21 @@ in {
   ];
 }
 ```
+
+## Fish colors from scheme
+This lib function generates fish plugin which configures fish colors from a sheme.
+
+```nix
+{ pkgs, config, nix-colors, ... }:
+
+let
+  inherit (nix-colors.lib { inherit pkgs; }) fishThemeFromScheme;
+in {
+  programs.fish.plugins = [
+    {
+      name = "nix-base16";
+      src = fishThemeFromScheme { scheme = config.colorscheme; };
+    }
+  ];
+}
+```
