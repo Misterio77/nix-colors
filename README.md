@@ -3,31 +3,40 @@
 # About
 This repo is designed to help with Nix(OS) theming.
 
-At the core, we have an attribute set with 220+ base16 schemes, as well as a [home-manager](https://github.com/nix-community/home-manager) module for globally setting your preferred one.
+At the core, we expose a nix attribute set with 220+ base16 schemes, as well as
+a [home-manager](https://github.com/nix-community/home-manager) module for
+globally setting your preferred one.
 
-Plus some optional [functions](lib-usage.md) for common use cases (generating scheme from image, generating wallpaper, vim scheme, gtk theme).
+These schemes are not vendored in: they are directly fetch (and flake locked!)
+from [base16-schemes](https://github.com/base16-project/base16-schemes), then
+converted using our (pure nix) `schemeFromYAML` function, which is also exposed
+for your convenience. This means you can easily make your own schemes, in
+either nix-colors (`.nix`) or base16 (`.yaml`) format, freely converting
+between the two.
+
+The core portion of nix-colors is very unopinionated and should work with all
+possible workflows very easily, without any boilerplate code.
+
+We also have some optional contrib functions for opinionated, common use cases
+(generating scheme from image, generating wallpaper, vim scheme, gtk theme).
 
 ## Base16?
-[Base16](https://github.com/chriskempson/base16) is a standard for defining palettes (schemes), and how each app should be themed (templates).
+[Base16](https://github.com/base16-project/base16) is a standard for defining
+palettes (schemes), and how each app should be themed (templates).
 
-nix-colors focuses on delivering you just the schemes, while being easy to use, flexible, and unopinionated.
-
-## Existing solutions?
-Nix is amazing and lets people do stuff their way, so people end up with lots of different (often incompatible) solutions to the same problem.
-
-Theming is one of them. Based on [rycee's](https://gitlab.com/rycee/nur-expressions/-/tree/master/hm-modules/theme-base16), some of my experience with creating a [base16 theming workflow](https://github.com/misterio77/flavours), and a demand for a easy way to expose multiple schemes, i decided to create this.
-
-Perhaps this could become a standard solution for a common problem.
-
-![relevant xkcd](https://imgs.xkcd.com/comics/standards.png)
+nix-colors focuses on delivering and helping you use the schemes, all in a
+Nix-friendly way.
 
 # Setup
 
 The usual setup looks like this:
-- Either add the repo to your flake inputs, or add the channel on a legacy setup.
+- Either add the repo to your flake inputs, or add the channel on a legacy
+  setup.
 - Import the home-manager module `nix-colors.homeManagerModule`
-- Set the option `colorscheme` to your preferred color scheme (such as `nix-colors.colorSchemes.dracula`)
-- Use `config.colorscheme.colors.base0X` to refer to any of the 16 colors from anywhere!
+- Set the option `colorScheme` to your preferred color scheme, such as
+  `nix-colors.colorSchemes.dracula` (or create/convert your own)
+- Use `config.colorScheme.colors.base0X` to refer to any of the 16 colors from
+  anywhere!
 
 ## Importing
 
@@ -42,7 +51,8 @@ First add `nix-colors` to your flake inputs:
 }
 ```
 
-Then, you need some way to pass this onwards to your `home-manager` configuration.
+Then, you need some way to pass this onwards to your `home-manager`
+configuration.
 
 If you're using standalone home-manager, use `extraSpecialArgs` for this:
 ```nix
@@ -54,7 +64,8 @@ homeConfigurations = {
 };
 ```
 
-Or, if using it as a NixOS module, use `specialArgs` on your flake (and `extraSpecialArgs` wherever you import your home nix file):
+Or, if using it as a NixOS module, use `specialArgs` on your flake (and
+`extraSpecialArgs` wherever you import your home nix file):
 ```nix
 nixosConfigurations = {
   bar = nixpkgs.lib.nixosSystem {
@@ -66,35 +77,40 @@ nixosConfigurations = {
 
 
 ### Legacy (non-flake)
-If you're not using flakes, the most convenient method is adding nix-colors to your channels:
+If you're not using flakes, the most convenient method is adding nix-colors to
+your channels:
 ```
 nix-channel --add https://github.com/misterio77/nix-colors/archive/main.tar.gz nix-colors
 nix-channel --update
 ```
 
-Then, at the top of your config file(s) add `nix-colors ? <nix-colors>` as an argument (instead of just `nix-colors`).
+Then, at the top of your config file(s) add `nix-colors ? <nix-colors>` as an
+argument (instead of just `nix-colors`).
 
 ## Using
 
 With that done, move on to your home manager configuration.
 
-You should import the `nix-colors.homeManagerModule`, and set the option `colorscheme` to your preferred scheme, such as `nix-colors.colorSchemes.dracula`
+You should import the `nix-colors.homeManagerModule`, and set the option
+`colorScheme` to your preferred scheme, such as
+`nix-colors.colorSchemes.dracula`
 
-Here's a quick example on how to use it with, say, a terminal emulator (kitty) and a browser (qutebrowser):
+Here's a quick example on how to use it with, say, a terminal emulator (kitty)
+and a browser (qutebrowser):
 ```nix
 { pkgs, config, nix-colors, ... }: {
   imports = [
     nix-colors.homeManagerModule
   ];
 
-  colorscheme = nix-colors.colorSchemes.dracula;
+  colorScheme = nix-colors.colorSchemes.dracula;
 
   programs = {
     kitty = {
       enable = true;
       settings = {
-        foreground = "#${config.colorscheme.colors.base05}";
-        background = "#${config.colorscheme.colors.base00}";
+        foreground = "#${config.colorScheme.colors.base05}";
+        background = "#${config.colorScheme.colors.base00}";
         # ...
       };
     };
@@ -102,9 +118,9 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
       enable = true;
       colors = {
         # Becomes either 'dark' or 'light', based on your colors!
-        webppage.preferred_color_scheme = "${config.colorscheme.kind}";
-        tabs.bar.bg = "#${config.colorscheme.colors.base00}";
-        keyhint.fg = "#${config.colorscheme.colors.base05}";
+        webppage.preferred_color_scheme = "${config.colorScheme.kind}";
+        tabs.bar.bg = "#${config.colorScheme.colors.base00}";
+        keyhint.fg = "#${config.colorScheme.colors.base05}";
         # ...
       };
     };
@@ -112,18 +128,14 @@ Here's a quick example on how to use it with, say, a terminal emulator (kitty) a
 }
 ```
 
-If you change `colorscheme` for anything else (say, `nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new scheme! Awesome!
+If you change `colorScheme` for anything else (say,
+`nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new
+scheme! Awesome!
 
-# Lib functions
-[Moved to its own file](lib-usage.md)
-
-# Advanced usage
-
-## Custom scheme
-Okay, we have a lot of schemes, but maybe you want to hardcode (or generate it somehow?) your own, no problem! You can just specify it directly:
+You can, of course, specify (or generate somehow) your nix-colors scheme directly:
 ```nix
 {
-  colorscheme = {
+  colorScheme = {
     slug = "pasque";
     name = "Pasque";
     author = "Gabriel Fontes (https://github.com/Misterio77)";
@@ -149,22 +161,115 @@ Okay, we have a lot of schemes, but maybe you want to hardcode (or generate it s
 }
 ```
 
-## Listing all schemes (and registry usage)
-Maybe you're working on a cool graphical menu for choosing schemes? Or want to pick a random scheme when you press a button?
+This is it for basic usage! You're ready to `nix`ify your `colors`. Read on if
+you're interested in converting schemes between our format and base16's, or
+want to check out our opinionated contrib functions.
 
-No problem with `nix-colors`! The fact that we expose all schemes means you can easily use `nix eval` to list schemes (or even grab and print out their colors), for all your scripting needs.
-```bash
-nix eval --raw nix-colors#colorSchemes --apply 's: builtins.concatStringsSep "\n" (builtins.attrNames s)'
-```
+# Lib functions
 
-This assumes you have nix-colors set as a nix registry. You can easily do it by passing `nix-colors` from your flake to your system configuration, and using:
+## Core
+
+Our core functions do not require nixpkgs. Nix all the way down (at least until
+you get to nix-the-package-manager code) baby!
+
+All of these are exposed at `nix-colors.lib-core`.
+
+### `schemeFromYAML`
+
+This function is used internally to convert base16's schemes to nix-colors
+format, but is exposed so you can absolutely do the same.
+
+Just grab (or create yours) a `.yaml` file, read it into a string (with
+`readFile`, for example) and you're golden:
 ```nix
+{ nix-colors, ... }:
 {
-  nix.registry.nix-colors.flake = nix-colors;
+  colorScheme = nix-colors.lib-core.schemeFromYAML (builtins.readFile ./cool-scheme.yaml);
 }
 ```
 
-It is quite nice to add all your flake inputs as system registries, [here's an example on how to do it](https://github.com/Misterio77/nix-starter-config/blob/minimal/configuration.nix#L67).
+This path can come from wherever nix can read, even another repo! That's what
+we do to expose base16's schemes.
+
+### `schemeToYAML`
+
+Maybe you took a liking to writting (or generating) colors in nix-colors sweet
+nix syntax, but want to contribute back to base16. No, no, don't write that
+YAML by hand!
+
+We have a `schemeToYAML` for converting from nix-colors's `.nix` to
+base16's `.yaml` format.
+
+Grab your nix-colors scheme, pass it to the function, and you get the YAML
+string (you can write it `toFile` if you want) in return. Here's an example
+with nix-repl:
+```bash
+$ nix repl
+nix-repl> :lf .
+nix-repl> bultins.toFile "pasque.yaml" (inputs.nix-colors.lib-core.schemeToYAML inputs.nix-colors.colorSchemes.pasque)
+```
+
+### More soon(TM)
+
+We plan on helping you turn existing base16 templates into nifty nix functions
+real soon, as well as converting colors between hex and decimal. Stay tuned!
+
+## Contributed functions
+
+We also have a few opinionated functions for some common scheme usecases: such
+as generating schemes from an image, generating an image from a scheme... You get
+the idea.
+
+These nifty pals are listed (and documented) at `./lib/contrib/default.nix`.
+They are exposed at `nix-colors.lib-contrib`.
+
+Do note these require `nixpkgs`, however. You should pass your `pkgs` instance
+to `nix-colors.lib-contrib` to use them. For example:
+```nix
+{ pkgs, nix-colors, ... }:
+
+let
+  nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
+in {
+  colorScheme = nix-colors-lib.colorSchemeFromPicture {
+    path = ./wallpapers/example.png;
+    kind = "light";
+  };
+}
+```
+
+# Upstreaming new schemes
+
+Please please upstream nice schemes you have created!
+
+It's pretty easy to do. Just open up a PR on
+[base16-schemes](https://github.com/base16-project/base16-schemes), and once
+it's in it will be available here.
+
+If it takes a while to be merged, you can temporarily put it together with your
+config and use [`schemeFromYAML`](#schemeFromYAML) to load it.
+
+Alternatively, you can tell nix-colors to follow your base16-schemes fork.
+There's two ways to do it.
+
+- In your flake inputs, add `base16-schemes` and override
+  `nix-colors.inputs.base16-schemes.follows`:
+```nix
+{
+  description = "Your cool config flake";
+  inputs = {
+    base16-schemes = "github:you/nix-colors"; # Your base16-schemes fork
+
+    nix-colors.url = "github:misterio77/nix-colors";
+    nix-colors.inputs.base16-schemes.follows = "base16-schemes"; # Be sure to add this
+    # ...
+  };
+  # ...
+}
+```
+
+- Fork `nix-colors` and edit our `flake.nix` to point at your `base16-schemes`
+  repo. Then update your flake config to use your `nix-colors` fork.
 
 # Thanks
 
@@ -173,8 +278,3 @@ Special thanks to rycee for most of this repo's inspiration, plus for the amazin
 Huge thanks for everyone involved with base16.
 
 Extra special thanks for my folks at the NixOS Brasil Telegram group, for willing to try this out!
-
-
-# Roadmap
-- Add support for base24 (which is backwards compatible with base16)
-- Add more functions for pre-configured application theming (i'd love your help!)
