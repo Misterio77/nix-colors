@@ -1,0 +1,27 @@
+{
+  "nodes": {
+    "base16-schemes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654798929,
+        "narHash": "sha256-8AWEiBpW0z0rlfVUF7BUIIPOXky2e4OEFbaj25+EAUM=",
+        "owner": "misterio77",
+        "repo": "base16-schemes",
+        "rev": "a6b824c3c9afee062a7aadb0861e76b31bf2bdb1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "misterio77",
+        "repo": "base16-schemes",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "base16-schemes": "base16-schemes"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
