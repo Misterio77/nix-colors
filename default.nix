@@ -15,13 +15,14 @@ rec {
   lib-core = import ./lib/core;
 
   colorSchemes = import ./schemes.nix { inherit lib-core base16-schemes; };
+  # Alias
+  colorschemes = colorSchemes;
 
   homeManagerModules = rec {
     colorScheme = import ./module;
-    # Aliases
+    # Alias
     colorscheme = colorScheme;
     default = colorScheme;
   };
-  # Deprecated alias
   homeManagerModule = homeManagerModules.colorScheme;
 }
