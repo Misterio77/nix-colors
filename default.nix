@@ -11,8 +11,10 @@
 }:
 rec {
   lib = import ./lib;
+  lib-contrib = import ./lib/contrib;
+  lib-core = import ./lib/core;
 
-  colorSchemes = import ./schemes.nix { inherit lib base16-schemes; };
+  colorSchemes = import ./schemes.nix { inherit lib-core base16-schemes; };
 
   homeManagerModules = rec {
     colorScheme = import ./module;
