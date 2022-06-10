@@ -277,4 +277,6 @@ Special thanks to rycee for most of this repo's inspiration, plus for the amazin
 
 Huge thanks for everyone involved with base16.
 
+Gigantic thanks to arcnmx, for his pure-nix `fromYAML` function.
+
 Extra special thanks for my folks at the NixOS Brasil Telegram group, for willing to try this out!
