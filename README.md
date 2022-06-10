@@ -220,8 +220,9 @@ We also have a few opinionated functions for some common scheme usecases: such
 as generating schemes from an image, generating an image from a scheme... You get
 the idea.
 
-These nifty pals are listed (and documented) at `./lib/contrib/default.nix`.
-They are exposed at `nix-colors.lib-contrib`.
+These nifty pals are listed (and documented) at
+[`lib/contrib/default.nix`](lib/contrib/default.nix). They are exposed at
+`nix-colors.lib-contrib`.
 
 Do note these require `nixpkgs`, however. You should pass your `pkgs` instance
 to `nix-colors.lib-contrib` to use them. For example:
