@@ -250,9 +250,8 @@ If it takes a while to be merged, you can temporarily put it together with your
 config and use [`schemeFromYAML`](#schemeFromYAML) to load it.
 
 Alternatively, you can tell nix-colors to follow your base16-schemes fork.
-There's two ways to do it.
 
-- In your flake inputs, add `base16-schemes` and override
+In your flake inputs, add `base16-schemes` and override
   `nix-colors.inputs.base16-schemes.follows`:
 ```nix
 {
@@ -267,9 +266,6 @@ There's two ways to do it.
   # ...
 }
 ```
-
-- Fork `nix-colors` and edit our `flake.nix` to point at your `base16-schemes`
-  repo. Then update your flake config to use your `nix-colors` fork.
 
 # Thanks
 
