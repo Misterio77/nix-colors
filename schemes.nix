@@ -31,7 +31,7 @@ let
       # Scheme slug
       name = stripYamlExtension (baseNameOf filename);
       # Scheme contents
-      value = schemeFromYAML (readFile "${base16-schemes}/${filename}");
+      value = schemeFromYAML (readFile "${base16-schemes}/${filename}") // { slug = name; };
     })
     colorSchemeFiles);
 in

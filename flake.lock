@@ -3,11 +3,11 @@
     "base16-schemes": {
       "flake": false,
       "locked": {
-        "lastModified": 1654798929,
-        "narHash": "sha256-8AWEiBpW0z0rlfVUF7BUIIPOXky2e4OEFbaj25+EAUM=",
+        "lastModified": 1654840852,
+        "narHash": "sha256-qXwf/xBn7mkr/FVEH8WI2OT5rvwzqrH9/D/GVksUujk=",
         "owner": "misterio77",
         "repo": "base16-schemes",
-        "rev": "a6b824c3c9afee062a7aadb0861e76b31bf2bdb1",
+        "rev": "68547bc1f80cdb95698e6af53327211d5461f791",
         "type": "github"
       },
       "original": {
