@@ -21,24 +21,11 @@ We also have some optional contrib functions for opinionated, common use cases
 (generating scheme from image, generating wallpaper, vim scheme, gtk theme).
 
 ## Base16?
-[Base16](https://github.com/chriskempson/base16) is a standard for defining
+[Base16](https://github.com/base16-project/base16) is a standard for defining
 palettes (schemes), and how each app should be themed (templates).
 
-nix-colors focuses on delivering the schemes to you in a Nix-friendly way.
-
-## Existing solutions?
-Nix is amazing and lets people do stuff their way, so people end up with lots
-of different (often incompatible) solutions to the same problem.
-
-Theming is one of them. Based on
-[rycee's](https://gitlab.com/rycee/nur-expressions/-/tree/master/hm-modules/theme-base16),
-some of my experience with creating a [base16 theming
-workflow](https://github.com/misterio77/flavours), and a demand for a easy way
-to expose multiple schemes, i decided to create this.
-
-Perhaps this could become a standard solution for a common problem.
-
-![relevant xkcd](https://imgs.xkcd.com/comics/standards.png)
+nix-colors focuses on delivering and helping you use the schemes, all in a
+Nix-friendly way.
 
 # Setup
 
@@ -46,9 +33,9 @@ The usual setup looks like this:
 - Either add the repo to your flake inputs, or add the channel on a legacy
   setup.
 - Import the home-manager module `nix-colors.homeManagerModule`
-- Set the option `colorscheme` to your preferred color scheme, such as
+- Set the option `colorScheme` to your preferred color scheme, such as
   `nix-colors.colorSchemes.dracula` (or create/convert your own)
-- Use `config.colorscheme.colors.base0X` to refer to any of the 16 colors from
+- Use `config.colorScheme.colors.base0X` to refer to any of the 16 colors from
   anywhere!
 
 ## Importing
@@ -105,7 +92,7 @@ argument (instead of just `nix-colors`).
 With that done, move on to your home manager configuration.
 
 You should import the `nix-colors.homeManagerModule`, and set the option
-`colorscheme` to your preferred scheme, such as
+`colorScheme` to your preferred scheme, such as
 `nix-colors.colorSchemes.dracula`
 
 Here's a quick example on how to use it with, say, a terminal emulator (kitty)
@@ -116,14 +103,14 @@ and a browser (qutebrowser):
     nix-colors.homeManagerModule
   ];
 
-  colorscheme = nix-colors.colorSchemes.dracula;
+  colorScheme = nix-colors.colorSchemes.dracula;
 
   programs = {
     kitty = {
       enable = true;
       settings = {
-        foreground = "#${config.colorscheme.colors.base05}";
-        background = "#${config.colorscheme.colors.base00}";
+        foreground = "#${config.colorScheme.colors.base05}";
+        background = "#${config.colorScheme.colors.base00}";
         # ...
       };
     };
@@ -131,9 +118,9 @@ and a browser (qutebrowser):
       enable = true;
       colors = {
         # Becomes either 'dark' or 'light', based on your colors!
-        webppage.preferred_color_scheme = "${config.colorscheme.kind}";
-        tabs.bar.bg = "#${config.colorscheme.colors.base00}";
-        keyhint.fg = "#${config.colorscheme.colors.base05}";
+        webppage.preferred_color_scheme = "${config.colorScheme.kind}";
+        tabs.bar.bg = "#${config.colorScheme.colors.base00}";
+        keyhint.fg = "#${config.colorScheme.colors.base05}";
         # ...
       };
     };
@@ -141,14 +128,14 @@ and a browser (qutebrowser):
 }
 ```
 
-If you change `colorscheme` for anything else (say,
+If you change `colorScheme` for anything else (say,
 `nix-colors.colorSchemes.nord`), both qutebrowser and kitty will match the new
 scheme! Awesome!
 
 You can, of course, specify (or generate somehow) your nix-colors scheme directly:
 ```nix
 {
-  colorscheme = {
+  colorScheme = {
     slug = "pasque";
     name = "Pasque";
     author = "Gabriel Fontes (https://github.com/Misterio77)";
@@ -197,7 +184,7 @@ Just grab (or create yours) a `.yaml` file, read it into a string (with
 ```nix
 { nix-colors, ... }:
 {
-  colorscheme = nix-colors.lib-core.schemeFromYAML (builtins.readFile ./cool-scheme.yaml);
+  colorScheme = nix-colors.lib-core.schemeFromYAML (builtins.readFile ./cool-scheme.yaml);
 }
 ```
 
@@ -244,7 +231,7 @@ to `nix-colors.lib-contrib` to use them. For example:
 let
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in {
-  colorscheme = nix-colors-lib.colorschemeFromPicture {
+  colorScheme = nix-colors-lib.colorSchemeFromPicture {
     path = ./wallpapers/example.png;
     kind = "light";
   };

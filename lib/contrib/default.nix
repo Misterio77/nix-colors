@@ -1,10 +1,10 @@
 { pkgs }:
 
-{
+rec {
   # Takes a scheme, resulting wallpaper height and width, plus logo scale, and ouputs the generated wallpaper path
   # Example:
   # wallpaper = nixWallpaperFromScheme {
-  #   scheme = config.colorscheme;
+  #   scheme = config.colorScheme;
   #   width = 2560;
   #   height = 1080;
   #   logoScale = 5.0;
@@ -14,16 +14,18 @@
   # Takes a picture path and a scheme kind ("dark" or "light"), and outputs a colorscheme based on it
   # Please note the path must be accessible by your flake on pure mode
   # Example:
-  # colorscheme = colorschemFromPicture {
+  # colorScheme = colorSchemeFromPicture {
   #   path = ./my/cool/wallpaper.png;
   #   kind = "dark";
   # };
-  colorschemeFromPicture = import ./from-picture.nix { inherit pkgs; };
+  colorSchemeFromPicture = import ./from-picture.nix { inherit pkgs; };
+  # Alias for backwards compat
+  colorschemeFromPicture = colorSchemeFromPicture;
 
   # Takes a scheme, ouputs a generated materia GTK theme
   # Example:
   # gtk.theme.package = gtkThemeFromScheme {
-  #   scheme = config.colorscheme;
+  #   scheme = config.colorScheme;
   # };
   gtkThemeFromScheme = import ./gtk-theme.nix { inherit pkgs; };
 
@@ -31,13 +33,13 @@
   #
   # The output theme name will be "nix-" followed by the coloscheme's slug, and
   # should be set, for example, by adding to your vim config:
-  # "colorscheme nix-${config.colorscheme.slug}"
+  # "colorScheme nix-${config.colorScheme.slug}"
   #
   # Example:
   # programs.vim.plugins = [
   #   {
-  #     plugin = vimThemeFromScheme { scheme = config.colorscheme; };
-  #     config = "colorscheme ${config.colorscheme.slug}";
+  #     plugin = vimThemeFromScheme { scheme = config.colorScheme; };
+  #     config = "colorScheme ${config.colorScheme.slug}";
   #   }
   # ];
   vimThemeFromScheme = import ./vim-theme.nix { inherit pkgs; };

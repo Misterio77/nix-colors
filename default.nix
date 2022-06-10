@@ -23,5 +23,5 @@ rec {
     default = colorScheme;
   };
   # Deprecated alias
-  homeManagerModule = homeManagerModules.colorscheme;
+  homeManagerModule = homeManagerModules.colorScheme;
 }
