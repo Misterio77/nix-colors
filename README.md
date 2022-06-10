@@ -17,9 +17,8 @@ between the two.
 The core portion of nix-colors is very unopinionated and should work with all
 possible workflows very easily, without any boilerplate code.
 
-We also have some optional [contrib functions](docs/contrib-functions.md) for
-opinionated, common use cases (generating scheme from image, generating
-wallpaper, vim scheme, gtk theme).
+We also have some optional contrib functions for opinionated, common use cases
+(generating scheme from image, generating wallpaper, vim scheme, gtk theme).
 
 ## Base16?
 [Base16](https://github.com/chriskempson/base16) is a standard for defining
@@ -186,7 +185,7 @@ want to check out our opinionated contrib functions.
 Our core functions do not require nixpkgs. Nix all the way down (at least until
 you get to nix-the-package-manager code) baby!
 
-All of these are exposed at `nix-colors.lib`.
+All of these are exposed at `nix-colors.lib-core`.
 
 ### `schemeFromYAML`
 
@@ -198,7 +197,7 @@ Just grab (or create yours) a `.yaml` file, read it into a string (with
 ```nix
 { nix-colors, ... }:
 {
-  colorscheme = nix-colors.lib.schemeFromYAML (builtins.readFile ./cool-scheme.yaml);
+  colorscheme = nix-colors.lib-core.schemeFromYAML (builtins.readFile ./cool-scheme.yaml);
 }
 ```
 
@@ -220,7 +219,7 @@ with nix-repl:
 ```bash
 $ nix repl
 nix-repl> :lf .
-nix-repl> bultins.toFile "pasque.yaml" (inputs.nix-colors.lib.schemeToYAML inputs.nix-colors.colorSchemes.pasque)
+nix-repl> bultins.toFile "pasque.yaml" (inputs.nix-colors.lib-core.schemeToYAML inputs.nix-colors.colorSchemes.pasque)
 ```
 
 ### More soon(TM)
@@ -235,15 +234,15 @@ as generating schemes from an image, generating an image from a scheme... You ge
 the idea.
 
 These nifty pals are listed (and documented) at `./lib/contrib/default.nix`.
-They are exposed at `nix-colors.lib.contrib`.
+They are exposed at `nix-colors.lib-contrib`.
 
 Do note these require `nixpkgs`, however. You should pass your `pkgs` instance
-to `nix-colors.lib.contrib` to use them. For example:
+to `nix-colors.lib-contrib` to use them. For example:
 ```nix
 { pkgs, nix-colors, ... }:
 
 let
-  nix-colors-lib = nix-colors.lib.contrib { inherit pkgs; };
+  nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in {
   colorscheme = nix-colors-lib.colorschemeFromPicture {
     path = ./wallpapers/example.png;
