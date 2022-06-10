@@ -260,12 +260,13 @@ It's pretty easy to do. Just open up a PR on
 it's in it will be available here.
 
 If it takes a while to be merged, you can temporarily put it together with your
-config use [`schemeFromYAML`](#schemeFromYAML) to load it.
+config and use [`schemeFromYAML`](#schemeFromYAML) to load it.
 
-Alternatively, you can tell nix-colors to use your base16-schemes fork. There's
-two ways to do it.
+Alternatively, you can tell nix-colors to follow your base16-schemes fork.
+There's two ways to do it.
 
-- Override `nix-colors.inputs.base16-schemes.follows` in your flake:
+- In your flake inputs, add `base16-schemes` and override
+  `nix-colors.inputs.base16-schemes.follows`:
 ```nix
 {
   description = "Your cool config flake";
