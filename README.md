@@ -251,6 +251,38 @@ in {
 }
 ```
 
+# Upstreaming new schemes
+
+Please please upstream nice schemes you have created!
+
+It's pretty easy to do. Just open up a PR on
+[base16-schemes](https://github.com/base16-project/base16-schemes), and once
+it's in it will be available here.
+
+If it takes a while to be merged, you can temporarily put it together with your
+config use [`schemeFromYAML`](#schemeFromYAML) to load it.
+
+Alternatively, you can tell nix-colors to use your base16-schemes fork. There's
+two ways to do it.
+
+- Override `nix-colors.inputs.base16-schemes.follows` in your flake:
+```nix
+{
+  description = "Your cool config flake";
+  inputs = {
+    base16-schemes = "github:you/nix-colors"; # Your base16-schemes fork
+
+    nix-colors.url = "github:misterio77/nix-colors";
+    nix-colors.inputs.base16-schemes.follows = "base16-schemes"; # Be sure to add this
+    # ...
+  };
+  # ...
+}
+```
+
+- Fork `nix-colors` and edit our `flake.nix` to point at your `base16-schemes`
+  repo. Then update your flake config to use your `nix-colors` fork.
+
 # Thanks
 
 Special thanks to rycee for most of this repo's inspiration, plus for the amazing home-manager.
