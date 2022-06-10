@@ -39,7 +39,7 @@ rec {
   # programs.vim.plugins = [
   #   {
   #     plugin = vimThemeFromScheme { scheme = config.colorScheme; };
-  #     config = "colorScheme ${config.colorScheme.slug}";
+  #     config = "colorscheme ${config.colorScheme.slug}";
   #   }
   # ];
   vimThemeFromScheme = import ./vim-theme.nix { inherit pkgs; };
