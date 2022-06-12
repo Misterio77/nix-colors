@@ -1,10 +1,12 @@
 {
-  /* Convert a base16-compatible YAML file to a nix-colors-compatible scheme
+  /* Convert a slug name and base16-compatible YAML string into a nix-colors-compatible scheme
 
   Example:
-  schemeFromYAML ./pasque.yaml =>
+  schemeFromYAML "pasque" (builtins.readFile ./pasque.yaml) =>
   {
     author = "Gabriel Fontes (https://github.com/Misterio77)";
+    name = "Pasque";
+    slug = "pasque";
     colors = {
       base00 = "271C3A";
       base01 = "100323";
@@ -23,7 +25,6 @@
       base0E = "953B9D";
       base0F = "59325C";
     };
-    name = "pasque";
   }
   */
   schemeFromYAML = import ./schemeFromYAML.nix;

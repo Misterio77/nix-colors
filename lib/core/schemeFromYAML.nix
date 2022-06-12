@@ -46,14 +46,16 @@ let
     in
     mapListToAttrs attrLine lines'';
 
-  convertScheme = set: {
+  convertScheme = slug: set: {
     name = set.scheme;
     inherit (set) author;
+    inherit slug;
     colors = {
-      inherit (set) base00 base01 base02 base03 base04 base05 base06 base07 base08 base09 base0A base0B base0C base0D base0E base0F;
+      inherit (set) base00 base01 base02 base03 base04 base05 base06 base07
+        base08 base09 base0A base0B base0C base0D base0E base0F;
     };
   };
 
-  schemeFromYAML = content: convertScheme (fromYAML content);
+  schemeFromYAML = slug: content: convertScheme slug (fromYAML content);
 in
 schemeFromYAML

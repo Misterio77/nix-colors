@@ -184,7 +184,7 @@ Just grab (or create yours) a `.yaml` file, read it into a string (with
 ```nix
 { nix-colors, ... }:
 {
-  colorScheme = nix-colors.lib-core.schemeFromYAML (builtins.readFile ./cool-scheme.yaml);
+  colorScheme = nix-colors.lib-core.schemeFromYAML "cool-scheme" (builtins.readFile ./cool-scheme.yaml);
 }
 ```
 
