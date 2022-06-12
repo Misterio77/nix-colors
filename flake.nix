@@ -4,7 +4,7 @@
 
   inputs = {
     # Upstream source of .yaml base16 schemes
-    base16-schemes.url = "github:misterio77/base16-schemes";
+    base16-schemes.url = "github:base16-project/base16-schemes";
     base16-schemes.flake = false;
   };
 
