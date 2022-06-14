@@ -25,7 +25,7 @@ let
   # From https://github.com/arcnmx/nixexprs
   fromYAML = yaml:
     let
-      stripLine = line: elemAt (builtins.match "([^#]*)(#.*|)" line) 0;
+      stripLine = line: elemAt (builtins.match "(^[^#]*)($|#.*$)" line) 0;
       usefulLine = line: builtins.match "[ \\t]*" line == null;
       parseString = token:
         let
