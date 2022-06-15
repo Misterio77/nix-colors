@@ -36,7 +36,7 @@ let
         else elemAt match 0;
       attrLine = line:
         let
-          match = builtins.match "([^ :]+): *(.*?) *" line;
+          match = builtins.match "([^ :]+): *(.*)" line;
         in
         if match == null then throw ''YAML parse failed: "${line}"''
         else nameValuePair (elemAt match 0) (parseString (elemAt match 1));
