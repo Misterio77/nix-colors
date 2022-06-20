@@ -1,1 +1,1 @@
-{ imports = [ ./colorscheme.nix ]; }
+{ imports = [ ./colorscheme.nix ./integrations.nix ]; }
