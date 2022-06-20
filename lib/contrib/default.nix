@@ -43,4 +43,14 @@ rec {
   #   }
   # ];
   vimThemeFromScheme = import ./vim-theme.nix { inherit pkgs; };
+
+  # Takes a scheme, ouputs a script that applies this scheme to the current shell.
+  #
+  # Example:
+  # programs.fish = {
+  #   interactiveShellInit = ''
+  #     sh ${shellThemeFromScheme { scheme = config.colorScheme; }}
+  #   '';
+  # };
+  shellThemeFromScheme = import ./shell-theme.nix { inherit pkgs; };
 }
