@@ -4,6 +4,8 @@ with scheme.colors;
 pkgs.writeShellScript "shell-theme-${scheme.slug}.sh" ''
   if [ "''${TERM%%[-.]*}" = "screen" ]; then
       apply_color() { echo -ne "\033P\033]$@\007\033\\"; }
+  elif [ -n "$TMUX" ]; then
+      apply_color() { echo -ne "\033Ptmux;\033\033]$@\033\033\\\033\\"; }
   else
       apply_color() { echo -ne "\033]$@\033\\"; }
   fi
@@ -39,4 +41,7 @@ pkgs.writeShellScript "shell-theme-${scheme.slug}.sh" ''
 
   # cursor
   apply_color "12;#${base05}" # base00
+
+  # tmux terminal border
+  apply_color "708;#${base00}\00
 ''
