@@ -1,4 +1,4 @@
-{ nixpkgs,
+{ nixpkgs-lib,
   base16-schemes ? # If not defined (when not using flakes), download with fetchTarball (by lockfile info)
   let
     inherit (builtins) fromJSON readFile;
@@ -13,7 +13,7 @@
 rec {
   lib = import ./lib;
   lib-contrib = import ./lib/contrib;
-  lib-core = import ./lib/core { lib = nixpkgs.lib; };
+  lib-core = import ./lib/core { lib = nixpkgs-lib.lib; };
 
   colorSchemes = import ./schemes.nix { inherit lib-core base16-schemes; };
   # Alias
