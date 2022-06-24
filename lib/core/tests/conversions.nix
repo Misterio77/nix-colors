@@ -1,9 +1,9 @@
 # to run these tests:
 # nix-instantiate --eval --strict ./conversions.nix
 # if the resulting list is empty, all tests passed
-let
-  conversions = import ../conversions.nix {};
-  runTests = (import <nixpkgs/lib>).runTests;
+{nixpkgs-lib}: let
+  conversions = import ../conversions.nix {inherit nixpkgs-lib;};
+  inherit (nixpkgs-lib) runTests;
 in
   runTests {
     testHexToDec_1 = {
@@ -23,17 +23,17 @@ in
 
     testHexToRGB_1 = {
       expr = conversions.hexToRGB "012345";
-      expected = [ 1 35 69 ];
+      expected = [1 35 69];
     };
 
     testHexToRGB_2 = {
       expr = conversions.hexToRGB "abcdef";
-      expected = [ 171 205 239 ];
+      expected = [171 205 239];
     };
 
     testHexToRGB_3 = {
       expr = conversions.hexToRGB "000FFF";
-      expected = [ 0 15 255 ];
+      expected = [0 15 255];
     };
 
     testHexToRGBString_1 = {

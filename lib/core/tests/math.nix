@@ -1,9 +1,9 @@
 # to run these tests:
 # nix-instantiate --eval --strict ./math.nix
 # if the resulting list is empty, all tests passed
-let
-  math = import ../math.nix {};
-  runTests = (import <nixpkgs/lib>).runTests;
+{nixpkgs-lib}: let
+  math = import ../math.nix {inherit nixpkgs-lib;};
+  inherit (nixpkgs-lib) runTests;
 in
   runTests {
     testPow_1 = {

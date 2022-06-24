@@ -14,6 +14,7 @@ rec {
   lib = import ./lib;
   lib-contrib = import ./lib/contrib;
   lib-core = import ./lib/core { inherit nixpkgs-lib; };
+  tests = import ./lib/core/tests { inherit nixpkgs-lib; };
 
   colorSchemes = import ./schemes.nix { inherit lib-core base16-schemes; };
   # Alias
