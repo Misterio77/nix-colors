@@ -63,7 +63,8 @@
 
    */
   hexCharToDec = hex: let
-    lowerHex = nixpkgs-lib.toLower hex;
+    inherit (nixpkgs-lib) toLower;
+    lowerHex = toLower hex;
   in
     if builtins.stringLength hex != 1
     then throw "Function only accepts a single character."
@@ -89,11 +90,12 @@ in rec {
 
    */
   hexToDec = hex: let
-    decimals = builtins.map hexCharToDec (nixpkgs-lib.stringToCharacters hex);
-    decimalsAscending = nixpkgs-lib.reverseList decimals;
-    decimalsPowered = nixpkgs-lib.imap0 base16To10 decimalsAscending;
+    inherit (nixpkgs-lib) stringToCharacters reverseList imap0 foldl;
+    decimals = builtins.map hexCharToDec (stringToCharacters hex);
+    decimalsAscending = reverseList decimals;
+    decimalsPowered = imap0 base16To10 decimalsAscending;
   in
-    nixpkgs-lib.foldl builtins.add 0 decimalsPowered;
+    foldl builtins.add 0 decimalsPowered;
 
   /*
    Converts a 6 character hexadecimal string to RGB values.
