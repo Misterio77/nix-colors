@@ -1,4 +1,4 @@
-{ lib }:
+{ nixpkgs-lib }:
 {
   /* Convert a slug name and base16-compatible YAML string into a nix-colors-compatible scheme
 
@@ -31,5 +31,5 @@
   schemeFromYAML = import ./schemeFromYAML.nix;
   schemeToYAML = import ./schemeToYAML.nix;
 
-  conversions = import ./conversions.nix { inherit lib; };
+  conversions = import ./conversions.nix { inherit nixpkgs-lib; };
 }

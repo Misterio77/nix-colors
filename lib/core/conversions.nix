@@ -1,6 +1,6 @@
 {
-  lib,
-  math ? import ./math.nix {inherit lib;},
+  nixpkgs-lib,
+  math ? import ./math.nix {inherit nixpkgs-lib;},
 }: let
   hexToDecMap = {
     "0" = 0;
@@ -63,7 +63,7 @@
 
    */
   hexCharToDec = hex: let
-    lowerHex = lib.toLower hex;
+    lowerHex = nixpkgs-lib.toLower hex;
   in
     if builtins.stringLength hex != 1
     then throw "Function only accepts a single character."
@@ -89,11 +89,11 @@ in rec {
 
    */
   hexToDec = hex: let
-    decimals = builtins.map hexCharToDec (lib.stringToCharacters hex);
-    decimalsAscending = lib.reverseList decimals;
-    decimalsPowered = lib.imap0 base16To10 decimalsAscending;
+    decimals = builtins.map hexCharToDec (nixpkgs-lib.stringToCharacters hex);
+    decimalsAscending = nixpkgs-lib.reverseList decimals;
+    decimalsPowered = nixpkgs-lib.imap0 base16To10 decimalsAscending;
   in
-    lib.foldl builtins.add 0 decimalsPowered;
+    nixpkgs-lib.foldl builtins.add 0 decimalsPowered;
 
   /*
    Converts a 6 character hexadecimal string to RGB values.
@@ -138,7 +138,7 @@ in rec {
    */
   hexToRGBString = sep: hex: let
     inherit (builtins) map toString;
-    inherit (lib) concatStringsSep;
+    inherit (nixpkgs-lib) concatStringsSep;
     hexInRGB = hexToRGB hex;
     hexInRGBString = map toString hexInRGB;
   in

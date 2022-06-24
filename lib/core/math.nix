@@ -1,4 +1,4 @@
-{lib ? import <nixpkgs/lib>}: rec {
+{nixpkgs-lib}: rec {
   /*
    Base raised to the power of the exponent.
 
@@ -21,11 +21,13 @@
      => -125
 
    */
-  pow = base: exponent:
+  pow = base: exponent: let
+    inherit (nixpkgs-lib) mod;
+  in
     if exponent > 1
     then let
       x = pow base (exponent / 2);
-      odd_exp = lib.mod exponent 2 == 1;
+      odd_exp = mod exponent 2 == 1;
     in
       x
       * x

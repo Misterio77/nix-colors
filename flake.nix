@@ -15,7 +15,7 @@
     base16-schemes,
   }:
     import ./. {
-      inherit nixpkgs-lib;
+      nixpkgs-lib = nixpkgs-lib.lib;
       base16-schemes = base16-schemes.outPath;
     };
 }
