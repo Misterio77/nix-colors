@@ -1,5 +1,5 @@
 # to run these tests:
-# nix-instantiate --eval --strict ./conversions.nix
+# nix eval .#tests.conversions
 # if the resulting list is empty, all tests passed
 {nixpkgs-lib}: let
   conversions = import ../conversions.nix {inherit nixpkgs-lib;};

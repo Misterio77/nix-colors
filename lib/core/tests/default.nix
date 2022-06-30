@@ -1,6 +1,4 @@
-{nixpkgs-lib}: let
-  inherit (nixpkgs-lib) callPackage;
-in {
-  math = callPackage ./math.nix;
-  conversions = callPackage ./conversions.nix;
+{nixpkgs-lib}: {
+  math = import ./math.nix {inherit nixpkgs-lib;};
+  conversions = import ./conversions.nix {inherit nixpkgs-lib;};
 }
