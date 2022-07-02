@@ -43,5 +43,5 @@ pkgs.writeShellScript "shell-theme-${scheme.slug}.sh" ''
   apply_color "12;#${base05}" # base00
 
   # tmux terminal border
-  apply_color "708;#${base00}\00
+  apply_color "708;#${base00}\00"
 ''
