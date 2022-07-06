@@ -13,7 +13,6 @@ pkgs.stdenv.mkDerivation rec {
     repo = "materia-theme";
     rev = "76cac96ca7fe45dc9e5b9822b0fbb5f4cad47984";
     sha256 = "sha256-0eCAfm/MWXv6BbCl2vbVbvgv8DiUH09TAUhoKq7Ow0k=";
-    fetchSubmodules = true;
   };
   buildInputs = with pkgs; [
     sassc
