@@ -22,7 +22,7 @@ let
   # From https://github.com/arcnmx/nixexprs
   fromYAML = yaml:
     let
-      stripLine = line: elemAt (builtins.match "([^#]*)(#.*|)" line) 0;
+      stripLine = line: elemAt (builtins.match "(^[^#]*)($|#.*$)" line) 0;
       usefulLine = line: builtins.match "[ \\t]*" line == null;
       parseString = token:
         let match = builtins.match ''([^"]+|"([^"]*)" *)'' token;
@@ -33,7 +33,7 @@ let
         else
           elemAt match 0;
       attrLine = line:
-        let match = builtins.match "([^ :]+): *(.*?) *" line;
+        let match = builtins.match "([^ :]+): *(.*)" line;
         in if match == null then
           throw ''YAML parse failed: "${line}"''
         else
