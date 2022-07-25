@@ -9,11 +9,8 @@
     base16-schemes.flake = false;
   };
 
-  outputs = {
-    self,
-    nixpkgs-lib,
-    base16-schemes,
-  }:
+  outputs =
+    { self, nixpkgs-lib, base16-schemes }:
     import ./. {
       nixpkgs-lib = nixpkgs-lib.lib;
       base16-schemes = base16-schemes.outPath;

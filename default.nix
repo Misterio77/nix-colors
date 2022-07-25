@@ -11,7 +11,7 @@ let
     };
 in
 
-{ nixpkgs-lib ? fromFlake "nixpkgs-lib", base16-schemes ? fromFlake "base16-schemes", ... }:
+{ nixpkgs-lib ? import ((fromFlake "nixpkgs-lib") + "/lib"), base16-schemes ? fromFlake "base16-schemes", ... }:
 rec {
   lib = import ./lib;
   lib-contrib = import ./lib/contrib;
