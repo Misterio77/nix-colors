@@ -1,15 +1,17 @@
-{ nixpkgs-lib,
-  base16-schemes ? # If not defined (when not using flakes), download with fetchTarball (by lockfile info)
-  let
-    inherit (builtins) fromJSON readFile;
-    inherit ((fromJSON (readFile ./flake.lock)).nodes.base16-schemes) locked;
-  in
-  fetchTarball {
-    url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.tar.gz";
-    sha256 = locked.narHash;
-  }
-, ...
-}:
+let
+  inherit (builtins.fromJSON (builtins.readFile ./flake.lock)) nodes;
+  # Fetch using flake lock, for legacy compat
+  fromFlake = name:
+    let
+      inherit (nodes.${name}) locked;
+    in
+    fetchTarball {
+      url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.tar.gz";
+      sha256 = locked.narHash;
+    };
+in
+
+{ nixpkgs-lib ? fromFlake "nixpkgs-lib", base16-schemes ? fromFlake "base16-schemes", ... }:
 rec {
   lib = import ./lib;
   lib-contrib = import ./lib/contrib;
