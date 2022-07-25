@@ -1,4 +1,5 @@
-{ pkgs }: { scheme, width, height, logoScale }:
+{ pkgs }:
+{ scheme, width, height, logoScale }:
 pkgs.stdenv.mkDerivation {
   name = "generated-nix-wallpaper-${scheme.slug}.png";
   src = pkgs.writeTextFile {

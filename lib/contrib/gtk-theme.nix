@@ -1,12 +1,12 @@
-{ pkgs }: { scheme }:
+{ pkgs }:
+{ scheme }:
 
 let
   rendersvg = pkgs.runCommandNoCC "rendersvg" { } ''
     mkdir -p $out/bin
     ln -s ${pkgs.resvg}/bin/resvg $out/bin/rendersvg
   '';
-in
-pkgs.stdenv.mkDerivation rec {
+in pkgs.stdenv.mkDerivation rec {
   name = "generated-gtk-theme-${scheme.slug}";
   src = pkgs.fetchFromGitHub {
     owner = "nana-4";
