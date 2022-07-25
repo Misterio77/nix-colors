@@ -1,4 +1,5 @@
-{ pkgs }: { path, kind }:
+{ pkgs }:
+{ path, kind }:
 import (pkgs.stdenv.mkDerivation {
   name = "generated-colorscheme";
   buildInputs = with pkgs; [ flavours ];
