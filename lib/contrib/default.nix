@@ -45,6 +45,8 @@ rec {
   vimThemeFromScheme = import ./vim-theme.nix { inherit pkgs; };
 
   # Takes a scheme, ouputs a script that applies this scheme to the current shell.
+  # It also runs on ttys, and clears the screen when doing it (to look better).
+  # If you'd rather not let it clean your screen, pass the argument { clearTty = false; }
   #
   # Example:
   # programs.fish = {
