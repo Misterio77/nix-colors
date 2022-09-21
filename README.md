@@ -84,8 +84,23 @@ nix-channel --add https://github.com/misterio77/nix-colors/archive/main.tar.gz n
 nix-channel --update
 ```
 
-Then, at the top of your config file(s) add `nix-colors ? import <nix-colors> { }` as an
-argument (instead of just `nix-colors`).
+Then, instead of adding `nix-colors` as a argument in your config file(s), use
+a let binding. For example:
+
+```nix
+{ pkgs, config, ... }: # Don't put 'nix-colors' here
+let
+  nix-colors = import <nix-colors> { };
+in {
+  import = [
+    nix-colors.homeManagerModule
+  ];
+
+  colorScheme = nix-colors.colorSchemes.paraiso;
+
+  # ...
+}
+```
 
 ## Using
 
