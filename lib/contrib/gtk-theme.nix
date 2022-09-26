@@ -2,7 +2,7 @@
 { scheme }:
 
 let
-  rendersvg = pkgs.runCommandNoCC "rendersvg" { } ''
+  rendersvg = pkgs.runCommand "rendersvg" { } ''
     mkdir -p $out/bin
     ln -s ${pkgs.resvg}/bin/resvg $out/bin/rendersvg
   '';
