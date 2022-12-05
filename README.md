@@ -273,7 +273,7 @@ In your flake inputs, add `base16-schemes` and override
 {
   description = "Your cool config flake";
   inputs = {
-    base16-schemes = "github:you/nix-colors"; # Your base16-schemes fork
+    base16-schemes = "github:you/base16-schemes"; # Your base16-schemes fork
 
     nix-colors.url = "github:misterio77/nix-colors";
     nix-colors.inputs.base16-schemes.follows = "base16-schemes"; # Be sure to add this
