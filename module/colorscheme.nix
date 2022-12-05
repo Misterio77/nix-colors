@@ -5,12 +5,9 @@ let
   cfg = config.colorScheme;
   hexColorType = mkOptionType {
     name = "hex-color";
-    description = "RGB color in hex format, excluding leading #";
-    check = with types; (x:
-      (isString x) &&
-      (stringLength x == 6) &&
-      !(hasPrefix "#" x)
-    );
+    descriptionClass = "noun";
+    description = "RGB color in hex format";
+    check = x: isString x && !(hasPrefix "#" x);
   };
 in
 {
@@ -53,7 +50,9 @@ in
     };
 
     colors = mkOption {
-      type = types.attrsOf hexColorType;
+      type = with types; attrsOf (
+        coercedTo str (removePrefix "#") hexColorType
+      );
       default = { };
       example = literalExpression ''
         {
@@ -85,6 +84,9 @@ in
         The colorschemes provided by nix-colors follow the base16 standard.
         Some might leverage base24 and have 24 colors, but these can be safely
         used as if they were base16.
+
+        You may include a leading #, but it will be stripped when accessed from
+        config.colorscheme.colors.
       '';
     };
   };
