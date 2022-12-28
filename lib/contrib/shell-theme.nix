@@ -2,7 +2,9 @@
 # Source: https://git.sr.ht/~misterio/shellcolord
 with scheme.colors;
 pkgs.writeShellScript "shell-theme-${scheme.slug}.sh" /* bash */ ''
-  if [ "''${TERM%%[-.]*}" = "screen" ]; then
+  if [ "''${TERM%%[-.]*}" = "dumb" ]; then
+    apply_color() { true; }
+  elif [ "''${TERM%%[-.]*}" = "screen" ]; then
       apply_color() { echo -ne "\033P\033]$@\007\033\\"; }
   elif [ -n "$TMUX" ]; then
       apply_color() { echo -ne "\033Ptmux;\033\033]$@\033\033\\\033\\"; }
