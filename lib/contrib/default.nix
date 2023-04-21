@@ -31,16 +31,22 @@ rec {
   # Takes a scheme, ouputs a vim theme package.
   #
   # The output theme name will be "nix-" followed by the coloscheme's slug, and
-  # should be set, for example, by adding to your vim config:
-  # "colorScheme nix-${config.colorScheme.slug}"
+  # should be set, for example, by adding "colorscheme nix-${config.colorScheme.slug}"
+  # to your vimrc.
   #
-  # Example:
-  # programs.vim.plugins = [
-  #   {
-  #     plugin = vimThemeFromScheme { scheme = config.colorScheme; };
-  #     config = "colorscheme ${config.colorScheme.slug}";
-  #   }
-  # ];
+  # Vim example:
+  # programs.vim = {
+  #   plugins = [
+  #     (vimThemeFromScheme { scheme = config.colorScheme; })
+  #   ];
+  #   extraConfig = "colorscheme nix-${config.colorScheme.slug}";
+  # };
+  #
+  # Neovim example:
+  # programs.neovim.plugins = [{
+  #   plugin = vimThemeFromScheme { scheme = config.colorScheme; };
+  #   config = "colorscheme nix-${config.colorScheme.slug}";
+  # }];
   vimThemeFromScheme = import ./vim-theme.nix { inherit pkgs; };
 
   # Takes a scheme, ouputs a script that applies this scheme to the current shell.
