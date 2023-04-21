@@ -5,7 +5,8 @@
 let
   conversions = import ../conversions.nix { inherit nixpkgs-lib; };
   inherit (nixpkgs-lib) runTests;
-in runTests {
+in
+runTests {
   testHexToDec_1 = {
     expr = conversions.hexToDec "12";
     expected = 18;

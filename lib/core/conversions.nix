@@ -60,13 +60,15 @@ let
     let
       inherit (nixpkgs-lib) toLower;
       lowerHex = toLower hex;
-    in if builtins.stringLength hex != 1 then
+    in
+    if builtins.stringLength hex != 1 then
       throw "Function only accepts a single character."
     else if hexToDecMap ? ${lowerHex} then
       hexToDecMap."${lowerHex}"
     else
       throw "Character ${hex} is not a hexadecimal value.";
-in rec {
+in
+rec {
   /* Converts from hexadecimal to decimal.
 
      Type: hexToDec :: string -> int
@@ -88,7 +90,8 @@ in rec {
       decimals = builtins.map hexCharToDec (stringToCharacters hex);
       decimalsAscending = reverseList decimals;
       decimalsPowered = imap0 base16To10 decimalsAscending;
-    in foldl builtins.add 0 decimalsPowered;
+    in
+    foldl builtins.add 0 decimalsPowered;
 
   /* Converts a 6 character hexadecimal string to RGB values.
 
@@ -110,7 +113,8 @@ in rec {
       rgbStartIndex = [ 0 2 4 ];
       hexList = builtins.map (x: builtins.substring x 2 hex) rgbStartIndex;
       hexLength = builtins.stringLength hex;
-    in if hexLength != 6 then
+    in
+    if hexLength != 6 then
       throw ''
         Unsupported hex string length of ${builtins.toString hexLength}.
         Length must be exactly 6.
@@ -133,5 +137,6 @@ in rec {
       inherit (nixpkgs-lib) concatStringsSep;
       hexInRGB = hexToRGB hex;
       hexInRGBString = map toString hexInRGB;
-    in concatStringsSep sep hexInRGBString;
+    in
+    concatStringsSep sep hexInRGBString;
 }

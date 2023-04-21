@@ -10,7 +10,8 @@ let
     let
       sufLen = stringLength suffix;
       sLen = stringLength str;
-    in if sufLen <= sLen && suffix == substring (sLen - sufLen) sufLen str then
+    in
+    if sufLen <= sLen && suffix == substring (sLen - sufLen) sufLen str then
       substring 0 (sLen - sufLen) str
     else
       str;
@@ -18,7 +19,8 @@ let
     let
       lenContent = stringLength content;
       lenSuffix = stringLength suffix;
-    in lenContent >= lenSuffix
+    in
+    lenContent >= lenSuffix
     && substring (lenContent - lenSuffix) lenContent content == suffix;
 
   stripYamlExtension = filename:
@@ -28,10 +30,13 @@ let
 
   colorSchemeFiles = filter isYamlFile (attrNames (readDir base16-schemes));
 
-  colorSchemes = listToAttrs (map (filename: rec {
-    # Scheme slug
-    name = stripYamlExtension (baseNameOf filename);
-    # Scheme contents
-    value = schemeFromYAML name (readFile "${base16-schemes}/${filename}");
-  }) colorSchemeFiles);
-in colorSchemes
+  colorSchemes = listToAttrs (map
+    (filename: rec {
+      # Scheme slug
+      name = stripYamlExtension (baseNameOf filename);
+      # Scheme contents
+      value = schemeFromYAML name (readFile "${base16-schemes}/${filename}");
+    })
+    colorSchemeFiles);
+in
+colorSchemes

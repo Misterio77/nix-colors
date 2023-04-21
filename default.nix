@@ -9,8 +9,11 @@ let
       sha256 = locked.narHash;
     };
 
-in { nixpkgs-lib ? import ((fromFlake "nixpkgs-lib") + "/lib")
-, base16-schemes ? fromFlake "base16-schemes", ... }: rec {
+in
+{ nixpkgs-lib ? import ((fromFlake "nixpkgs-lib") + "/lib")
+, base16-schemes ? fromFlake "base16-schemes"
+, ...
+}: rec {
   lib = import ./lib;
   lib-contrib = import ./lib/contrib;
   lib-core = import ./lib/core { inherit nixpkgs-lib; };

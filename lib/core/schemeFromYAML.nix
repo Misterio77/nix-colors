@@ -16,7 +16,8 @@ let
       sep = builtins.unsafeDiscardStringContext _sep;
       s = builtins.unsafeDiscardStringContext _s;
       splits = filter builtins.isString (builtins.split (escapeRegex sep) s);
-    in map (v: addContextFrom _sep (addContextFrom _s v)) splits;
+    in
+    map (v: addContextFrom _sep (addContextFrom _s v)) splits;
   nameValuePair = name: value: { inherit name value; };
 
   # From https://github.com/arcnmx/nixexprs
@@ -41,7 +42,8 @@ let
       lines = splitString "\n" yaml;
       lines' = map stripLine lines;
       lines'' = filter usefulLine lines';
-    in mapListToAttrs attrLine lines'';
+    in
+    mapListToAttrs attrLine lines'';
 
   convertScheme = slug: set: {
     name = set.scheme;
@@ -55,4 +57,5 @@ let
   };
 
   schemeFromYAML = slug: content: convertScheme slug (fromYAML content);
-in schemeFromYAML
+in
+schemeFromYAML

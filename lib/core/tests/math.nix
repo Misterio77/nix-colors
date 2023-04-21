@@ -5,7 +5,8 @@
 let
   math = import ../math.nix { inherit nixpkgs-lib; };
   inherit (nixpkgs-lib) runTests;
-in runTests {
+in
+runTests {
   testPow_1 = {
     expr = math.pow 0 1000;
     expected = 0;

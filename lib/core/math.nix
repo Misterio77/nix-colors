@@ -25,7 +25,8 @@
       let
         x = pow base (exponent / 2);
         odd_exp = mod exponent 2 == 1;
-      in x * x * (if odd_exp then base else 1)
+      in
+      x * x * (if odd_exp then base else 1)
     else if exponent == 1 then
       base
     else if exponent == 0 && base == 0 then
