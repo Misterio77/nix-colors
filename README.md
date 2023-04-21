@@ -187,7 +187,7 @@ want to check out our opinionated contrib functions.
 Our core functions do not require nixpkgs. Nix all the way down (at least until
 you get to nix-the-package-manager code) baby!
 
-All of these are exposed at `nix-colors.lib-core`.
+All of these are exposed at `nix-colors.lib`.
 
 ### `schemeFromYAML`
 
@@ -199,7 +199,7 @@ Just grab (or create yours) a `.yaml` file, read it into a string (with
 ```nix
 { nix-colors, ... }:
 {
-  colorScheme = nix-colors.lib-core.schemeFromYAML "cool-scheme" (builtins.readFile ./cool-scheme.yaml);
+  colorScheme = nix-colors.lib.schemeFromYAML "cool-scheme" (builtins.readFile ./cool-scheme.yaml);
 }
 ```
 
@@ -221,7 +221,7 @@ with nix-repl:
 ```bash
 $ nix repl
 nix-repl> :lf .
-nix-repl> bultins.toFile "pasque.yaml" (inputs.nix-colors.lib-core.schemeToYAML inputs.nix-colors.colorSchemes.pasque)
+nix-repl> bultins.toFile "pasque.yaml" (inputs.nix-colors.lib.schemeToYAML inputs.nix-colors.colorSchemes.pasque)
 ```
 
 ### More soon(TM)
@@ -237,15 +237,15 @@ the idea.
 
 These nifty pals are listed (and documented) at
 [`lib/contrib/default.nix`](lib/contrib/default.nix). They are exposed at
-`nix-colors.lib-contrib`.
+`nix-colors.lib.contrib`.
 
 Do note these require `nixpkgs`, however. You should pass your `pkgs` instance
-to `nix-colors.lib-contrib` to use them. For example:
+to `nix-colors.lib.contrib` to use them. For example:
 ```nix
 { pkgs, nix-colors, ... }:
 
 let
-  nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
+  nix-colors-lib = nix-colors.lib.contrib { inherit pkgs; };
 in {
   colorScheme = nix-colors-lib.colorSchemeFromPicture {
     path = ./wallpapers/example.png;

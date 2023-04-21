@@ -14,12 +14,13 @@ in
 , base16-schemes ? fromFlake "base16-schemes"
 , ...
 }: rec {
-  lib = import ./lib;
   lib-contrib = import ./lib/contrib;
   lib-core = import ./lib/core { inherit nixpkgs-lib; };
+  lib = lib-core // { contrib = lib-contrib; };
+
   tests = import ./lib/core/tests { inherit nixpkgs-lib; };
 
-  colorSchemes = import ./schemes.nix { inherit lib-core base16-schemes; };
+  colorSchemes = import ./schemes.nix { inherit lib base16-schemes; };
   # Alias
   colorschemes = colorSchemes;
 

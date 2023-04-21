@@ -1,9 +1,9 @@
-{ lib-core, base16-schemes, ... }:
+{ lib, base16-schemes, ... }:
 let
   inherit (builtins)
     readFile readDir attrNames listToAttrs stringLength substring baseNameOf
     filter;
-  inherit (lib-core) schemeFromYAML;
+  inherit (lib) schemeFromYAML;
 
   # Borrowed from nixpkgs
   removeSuffix = suffix: str:
