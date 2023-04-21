@@ -32,7 +32,7 @@ Nix-friendly way.
 The usual setup looks like this:
 - Either add the repo to your flake inputs, or add the channel on a legacy
   setup.
-- Import the home-manager module `nix-colors.homeManagerModule`
+- Import the home-manager module `nix-colors.homeManagerModules.default`
 - Set the option `colorScheme` to your preferred color scheme, such as
   `nix-colors.colorSchemes.dracula` (or create/convert your own)
 - Use `config.colorScheme.colors.base0X` to refer to any of the 16 colors from
@@ -93,7 +93,7 @@ let
   nix-colors = import <nix-colors> { };
 in {
   import = [
-    nix-colors.homeManagerModule
+    nix-colors.homeManagerModules.default
   ];
 
   colorScheme = nix-colors.colorSchemes.paraiso;
@@ -106,7 +106,7 @@ in {
 
 With that done, move on to your home manager configuration.
 
-You should import the `nix-colors.homeManagerModule`, and set the option
+You should import the `nix-colors.homeManagerModules.default`, and set the option
 `colorScheme` to your preferred scheme, such as
 `nix-colors.colorSchemes.dracula`
 
@@ -115,7 +115,7 @@ and a browser (qutebrowser):
 ```nix
 { pkgs, config, nix-colors, ... }: {
   imports = [
-    nix-colors.homeManagerModule
+    nix-colors.homeManagerModules.default
   ];
 
   colorScheme = nix-colors.colorSchemes.dracula;
