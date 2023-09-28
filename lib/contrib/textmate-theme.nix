@@ -46,7 +46,7 @@ let
       '';
 
   colorsDict = with scheme.colors; {
-    name = "Generated base16 theme based on ${scheme.slug}";
+    name = "Generated base16 theme based on ${scheme.name}";
     semanticClass = "theme.base16.${scheme.slug}";
     colorSpaceName = "sRGB";
     gutterSettings = {
