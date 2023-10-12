@@ -73,8 +73,8 @@ rec {
   #
   # Example:
   # programs.bat = {
-  #   config.theme = myTheme;
-  #   themes.myTheme = builtins.readFile (textMateThemeFromScheme { scheme = config.colorScheme; });
+  #   config.theme = "myTheme";
+  #   themes.myTheme.src = textMateThemeFromScheme { scheme = config.colorScheme; };
   # };
   textMateThemeFromScheme = import ./textmate-theme.nix { inherit pkgs; };
 }
