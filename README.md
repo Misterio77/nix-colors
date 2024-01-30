@@ -206,24 +206,6 @@ Just grab (or create yours) a `.yaml` file, read it into a string (with
 This path can come from wherever nix can read, even another repo! That's what
 we do to expose base16's schemes.
 
-### `schemeToYAML`
-
-Maybe you took a liking to writting (or generating) colors in nix-colors sweet
-nix syntax, but want to contribute back to base16. No, no, don't write that
-YAML by hand!
-
-We have a `schemeToYAML` for converting from nix-colors's `.nix` to
-base16's `.yaml` format.
-
-Grab your nix-colors scheme, pass it to the function, and you get the YAML
-string (you can write it `toFile` if you want) in return. Here's an example
-with nix-repl:
-```bash
-$ nix repl
-nix-repl> :lf .
-nix-repl> bultins.toFile "pasque.yaml" (inputs.nix-colors.lib.schemeToYAML inputs.nix-colors.colorSchemes.pasque)
-```
-
 ### More soon(TM)
 
 We plan on helping you turn existing base16 templates into nifty nix functions
