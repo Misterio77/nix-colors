@@ -7,7 +7,7 @@
        author = "Gabriel Fontes (https://github.com/Misterio77)";
        name = "Pasque";
        slug = "pasque";
-       colors = {
+       palette = {
          base00 = "271C3A";
          base01 = "100323";
          base02 = "3E2D5C";

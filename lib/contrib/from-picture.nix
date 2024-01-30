@@ -1,5 +1,9 @@
 { pkgs }:
-{ path, kind }:
+{
+  path,
+  variant ? kind,
+  kind ? "light" # Older alias
+}:
 import (pkgs.stdenv.mkDerivation {
   name = "generated-colorscheme";
   buildInputs = with pkgs; [ flavours ];
@@ -7,10 +11,10 @@ import (pkgs.stdenv.mkDerivation {
   buildPhase = ''
     template=$(cat <<-END
     {
-      slug = "$(basename ${path} | cut -d '.' -f1)-${kind}";
+      slug = "$(basename ${path} | cut -d '.' -f1)-${variant}";
       name = "Generated";
       author = "nix-colors";
-      colors = {
+      palette = {
         base00 = "{{base00-hex}}";
         base01 = "{{base01-hex}}";
         base02 = "{{base02-hex}}";
@@ -32,7 +36,7 @@ import (pkgs.stdenv.mkDerivation {
     END
     )
 
-    flavours generate "${kind}" "${path}" --stdout | \
+    flavours generate "${variant}" "${path}" --stdout | \
     flavours build <( tee ) <( echo "$template" ) > default.nix
   '';
   installPhase = "mkdir -p $out && cp default.nix $out";

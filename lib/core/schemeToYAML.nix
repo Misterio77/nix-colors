@@ -28,7 +28,7 @@ let
       scheme: "${scheme.name}"
       author: "${scheme.author}"
     '' + concatMapStrings # Add a line for each base0X color
-      (color: ''${color}: "${scheme.colors.${color}}"'')
+      (color: ''${color}: "${scheme.palette.${color}}"'')
       colorNames;
 in
 schemeToYAML

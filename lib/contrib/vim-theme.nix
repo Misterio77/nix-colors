@@ -1,7 +1,7 @@
 { pkgs }:
 { scheme }:
 let
-  c = scheme.colors;
+  c = scheme.palette;
   slug = scheme.slug;
 in
 pkgs.writeTextDir "colors/nix-${slug}.vim" ''

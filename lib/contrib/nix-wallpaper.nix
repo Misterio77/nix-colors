@@ -3,9 +3,9 @@
 , width
 , height
 , logoScale
-, backgroundColor ? scheme.colors.base01
-, logoColor1 ? scheme.colors.base0C
-, logoColor2 ? scheme.colors.base0D
+, backgroundColor ? scheme.palette.base01
+, logoColor1 ? scheme.palette.base0C
+, logoColor2 ? scheme.palette.base0D
 }:
 pkgs.stdenv.mkDerivation {
   name = "generated-nix-wallpaper-${scheme.slug}.png";

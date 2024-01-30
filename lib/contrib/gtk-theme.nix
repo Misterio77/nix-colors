@@ -36,26 +36,26 @@ pkgs.stdenv.mkDerivation rec {
     sed -e 's/handle-horz-.*//' -e 's/handle-vert-.*//' -i ./src/gtk-2.0/assets.txt
 
     cat > /build/gtk-colors << EOF
-      BTN_BG=${scheme.colors.base02}
-      BTN_FG=${scheme.colors.base06}
-      FG=${scheme.colors.base05}
-      BG=${scheme.colors.base00}
-      HDR_BTN_BG=${scheme.colors.base01}
-      HDR_BTN_FG=${scheme.colors.base05}
-      ACCENT_BG=${scheme.colors.base0B}
-      ACCENT_FG=${scheme.colors.base00}
-      HDR_FG=${scheme.colors.base05}
-      HDR_BG=${scheme.colors.base02}
-      MATERIA_SURFACE=${scheme.colors.base02}
-      MATERIA_VIEW=${scheme.colors.base01}
-      MENU_BG=${scheme.colors.base02}
-      MENU_FG=${scheme.colors.base06}
-      SEL_BG=${scheme.colors.base0D}
-      SEL_FG=${scheme.colors.base0E}
-      TXT_BG=${scheme.colors.base02}
-      TXT_FG=${scheme.colors.base06}
-      WM_BORDER_FOCUS=${scheme.colors.base05}
-      WM_BORDER_UNFOCUS=${scheme.colors.base03}
+      BTN_BG=${scheme.palette.base02}
+      BTN_FG=${scheme.palette.base06}
+      FG=${scheme.palette.base05}
+      BG=${scheme.palette.base00}
+      HDR_BTN_BG=${scheme.palette.base01}
+      HDR_BTN_FG=${scheme.palette.base05}
+      ACCENT_BG=${scheme.palette.base0B}
+      ACCENT_FG=${scheme.palette.base00}
+      HDR_FG=${scheme.palette.base05}
+      HDR_BG=${scheme.palette.base02}
+      MATERIA_SURFACE=${scheme.palette.base02}
+      MATERIA_VIEW=${scheme.palette.base01}
+      MENU_BG=${scheme.palette.base02}
+      MENU_FG=${scheme.palette.base06}
+      SEL_BG=${scheme.palette.base0D}
+      SEL_FG=${scheme.palette.base0E}
+      TXT_BG=${scheme.palette.base02}
+      TXT_FG=${scheme.palette.base06}
+      WM_BORDER_FOCUS=${scheme.palette.base05}
+      WM_BORDER_UNFOCUS=${scheme.palette.base03}
       UNITY_DEFAULT_LAUNCHER_STYLE=False
       NAME=${scheme.slug}
       MATERIA_STYLE_COMPACT=True

@@ -1,6 +1,6 @@
 { pkgs }: { scheme, clearTty ? true }:
 # Source: https://git.sr.ht/~misterio/shellcolord
-with scheme.colors;
+with scheme.palette;
 pkgs.writeShellScript "shell-theme-${scheme.slug}.sh" /* bash */ ''
   if [ "''${TERM%%[-.]*}" = "dumb" ]; then
     apply_color() { true; }

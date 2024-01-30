@@ -35,7 +35,7 @@ The usual setup looks like this:
 - Import the home-manager module `nix-colors.homeManagerModules.default`
 - Set the option `colorScheme` to your preferred color scheme, such as
   `nix-colors.colorSchemes.dracula` (or create/convert your own)
-- Use `config.colorScheme.colors.base0X` to refer to any of the 16 colors from
+- Use `config.colorScheme.palette.base0X` to refer to any of the 16 colors from
   anywhere!
 
 ## Importing
@@ -124,8 +124,8 @@ and a browser (qutebrowser):
     kitty = {
       enable = true;
       settings = {
-        foreground = "#${config.colorScheme.colors.base05}";
-        background = "#${config.colorScheme.colors.base00}";
+        foreground = "#${config.colorScheme.palette.base05}";
+        background = "#${config.colorScheme.palette.base00}";
         # ...
       };
     };
@@ -133,9 +133,9 @@ and a browser (qutebrowser):
       enable = true;
       colors = {
         # Becomes either 'dark' or 'light', based on your colors!
-        webppage.preferred_color_scheme = "${config.colorScheme.kind}";
-        tabs.bar.bg = "#${config.colorScheme.colors.base00}";
-        keyhint.fg = "#${config.colorScheme.colors.base05}";
+        webppage.preferred_color_scheme = "${config.colorScheme.variant}";
+        tabs.bar.bg = "#${config.colorScheme.palette.base00}";
+        keyhint.fg = "#${config.colorScheme.palette.base05}";
         # ...
       };
     };
@@ -154,7 +154,7 @@ You can, of course, specify (or generate somehow) your nix-colors scheme directl
     slug = "pasque";
     name = "Pasque";
     author = "Gabriel Fontes (https://github.com/Misterio77)";
-    colors = {
+    palette = {
       base00 = "#271C3A";
       base01 = "#100323";
       base02 = "#3E2D5C";
@@ -249,7 +249,7 @@ let
 in {
   colorScheme = nix-colors-lib.colorSchemeFromPicture {
     path = ./wallpapers/example.png;
-    kind = "light";
+    variant = "light";
   };
 }
 ```

@@ -10,12 +10,12 @@ rec {
   # };
   nixWallpaperFromScheme = import ./nix-wallpaper.nix { inherit pkgs; };
 
-  # Takes a picture path and a scheme kind ("dark" or "light"), and outputs a colorscheme based on it
+  # Takes a picture path and a scheme variant ("dark" or "light"), and outputs a colorscheme based on it
   # Please note the path must be accessible by your flake on pure mode
   # Example:
   # colorScheme = colorSchemeFromPicture {
   #   path = ./my/cool/wallpaper.png;
-  #   kind = "dark";
+  #   variant = "dark";
   # };
   colorSchemeFromPicture = import ./from-picture.nix { inherit pkgs; };
   # Alias for backwards compat

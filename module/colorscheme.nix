@@ -11,7 +11,11 @@ let
   };
 in
 {
-  imports = [ (mkAliasOptionModule [ "colorscheme" ] [ "colorScheme" ]) ];
+  imports = [
+    (mkAliasOptionModule [ "colorscheme" ] [ "colorScheme" ])
+    (mkRenamedOptionModule [ "colorScheme" "kind" ] [ "colorScheme" "variant" ])
+    (mkRenamedOptionModule [ "colorScheme" "colors" ] [ "colorScheme" "palette" ])
+  ];
 
   options.colorScheme = {
     slug = mkOption {
@@ -29,6 +33,14 @@ in
         Color scheme (pretty) name
       '';
     };
+    description = mkOption {
+      type = types.str;
+      default = "";
+      example = "A very nice theme";
+      description = ''
+        Color scheme author
+      '';
+    };
     author = mkOption {
       type = types.str;
       default = "";
@@ -37,10 +49,10 @@ in
         Color scheme author
       '';
     };
-    kind = mkOption {
+    variant = mkOption {
       type = types.enum [ "dark" "light" ];
       default =
-        if builtins.substring 0 1 cfg.colors.base00 < "5" then
+        if builtins.substring 0 1 cfg.palette.base00 < "5" then
           "dark"
         else
           "light";
@@ -49,7 +61,7 @@ in
       '';
     };
 
-    colors = mkOption {
+    palette = mkOption {
       type = with types; attrsOf (
         coercedTo str (removePrefix "#") hexColorType
       );
@@ -75,18 +87,17 @@ in
         }
       '';
       description = ''
-        Atribute set of hex colors (excluding leading #).
+        Atribute set of hex colors.
 
         These are usually base00-base0F, but you may use any name you want.
-        This allows you to create arbitrarily named colors, similarly to
-        base17/basenext. You may also use base24 colors, for example.
+        For example, these can have meaningful names (bg, fg), or be base24.
 
         The colorschemes provided by nix-colors follow the base16 standard.
         Some might leverage base24 and have 24 colors, but these can be safely
         used as if they were base16.
 
         You may include a leading #, but it will be stripped when accessed from
-        config.colorscheme.colors.
+        config.colorscheme.palette.
       '';
     };
   };
