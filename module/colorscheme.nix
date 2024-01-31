@@ -26,38 +26,42 @@ in
       '';
     };
     name = mkOption {
-      type = types.str;
-      default = "";
+      type = types.nullOr types.str;
+      default = null;
       example = "Awesome Scheme";
       description = ''
         Color scheme (pretty) name
       '';
     };
     description = mkOption {
-      type = types.str;
-      default = "";
+      type = types.nullOr types.str;
+      default = null;
       example = "A very nice theme";
       description = ''
         Color scheme author
       '';
     };
     author = mkOption {
-      type = types.str;
-      default = "";
+      type = types.nullOr types.str;
+      default = null;
       example = "Gabriel Fontes (https://m7.rs)";
       description = ''
         Color scheme author
       '';
     };
     variant = mkOption {
-      type = types.enum [ "dark" "light" ];
-      default =
-        if builtins.substring 0 1 cfg.palette.base00 < "5" then
-          "dark"
-        else
-          "light";
+      type = types.nullOr (types.enum [ "dark" "light" ]);
+      default = let
+        bg = cfg.palette.base00 or cfg.palette.bg or cfg.palette.background or null;
+      in
+        # Very very naive heuristic. Please contribute a better solution if you
+        # come up with one that is not too complex to implement in pure nix.
+        if bg == null then null
+        else if substring 0 1 bg < "5" then "dark"
+        else if substring 0 1 bg >= "5" then "light"
+        else null;
       description = ''
-        Whether the scheme is dark or light
+        Whether the scheme is dark or light.
       '';
     };
 
