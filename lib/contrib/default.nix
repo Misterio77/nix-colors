@@ -60,4 +60,21 @@ rec {
   #   '';
   # };
   shellThemeFromScheme = import ./shell-theme.nix { inherit pkgs; };
+
+  # Takes a scheme, outputs a file containing a TextMate theme.
+  # Some other programs that use this format are SublimeText and bat.
+  #
+  # The file name is in the format "nix-${scheme.slug}.tmTheme".
+  #
+  # Optional parameters:
+  # extraConfig: Extra configs as a set (default: empty).
+  # extraXmlConfig: Extra XML configs as a string (default: empty).
+  # indentPattern: Pattern to use when indenting (default: "  ").
+  #
+  # Example:
+  # programs.bat = {
+  #   config.theme = "myTheme";
+  #   themes.myTheme.src = textMateThemeFromScheme { scheme = config.colorScheme; };
+  # };
+  textMateThemeFromScheme = import ./textmate-theme.nix { inherit pkgs; };
 }
