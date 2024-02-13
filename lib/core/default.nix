@@ -27,9 +27,11 @@
        };
      }
   */
-  schemeFromYAML = import ./schemeFromYAML.nix;
+  schemeFromYAML = import ./schemeFromYAML.nix { inherit nixpkgs-lib; };
 
   schemeToYAML = builtins.trace "nix-colors: schemeToYAML is deprecated and will be removed soon." (import ./schemeToYAML.nix);
 
   conversions = import ./conversions.nix { inherit nixpkgs-lib; };
+
+  slugify = import ./slugify.nix { inherit nixpkgs-lib; };
 }
