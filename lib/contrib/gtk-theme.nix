@@ -1,8 +1,12 @@
 {pkgs}: {scheme}: let
+  # make shorthand for a rendersvg command, has to do with icons / something else?
   rendersvg = pkgs.runCommand "rendersvg" {} ''
     mkdir -p $out/bin
     ln -s ${pkgs.resvg}/bin/resvg $out/bin/rendersvg
   '';
+  # mkdir rendersvg if directory does not already exist ( -p flag )
+  # ln -s symlinks find dir of resvg binary add to out / bin / rendersvg
+  # must be staging to render svg with a colour palette?
 in
   pkgs.stdenv.mkDerivation rec {
     name = "generated-gtk-theme-${scheme.slug}";
@@ -74,6 +78,15 @@ in
         TERMINAL_COLOR5=${scheme.palette.base0E}
         TERMINAL_COLOR6=${scheme.palette.base0C}
         TERMINAL_COLOR7=${scheme.palette.base07}
+        TERMINAL_COLOR8=${scheme.palette.base03}
+        TERMINAL_COLOR9=${scheme.palette.base08}
+        TERMINAL_COLOR10=${scheme.palette.base0B}
+        TERMINAL_COLOR11=${scheme.palette.base0A}
+        TERMINAL_COLOR12=${scheme.palette.base0D}
+        TERMINAL_COLOR13=${scheme.palette.base0E}
+        TERMINAL_COLOR14=${scheme.palette.base0C}
+        TERMINAL_COLOR15=${scheme.palette.base07}
+
 
         BTN_BG=${scheme.palette.base02}
         BTN_FG=${scheme.palette.base06}
