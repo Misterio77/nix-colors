@@ -70,6 +70,7 @@ in
       sed -e 's/handle-horz-.*//' -e 's/handle-vert-.*//' -i ./src/gtk-2.0/assets.txt
 
       cat > /build/gtk-colors << EOF
+
         TERMINAL_COLOR0=${scheme.palette.base00}
         TERMINAL_COLOR1=${scheme.palette.base08}
         TERMINAL_COLOR2=${scheme.palette.base0B}
@@ -77,7 +78,7 @@ in
         TERMINAL_COLOR4=${scheme.palette.base0D}
         TERMINAL_COLOR5=${scheme.palette.base0E}
         TERMINAL_COLOR6=${scheme.palette.base0C}
-        TERMINAL_COLOR7=${scheme.palette.base07}
+        TERMINAL_COLOR7=${scheme.palette.base05}
         TERMINAL_COLOR8=${scheme.palette.base03}
         TERMINAL_COLOR9=${scheme.palette.base08}
         TERMINAL_COLOR10=${scheme.palette.base0B}
@@ -86,7 +87,6 @@ in
         TERMINAL_COLOR13=${scheme.palette.base0E}
         TERMINAL_COLOR14=${scheme.palette.base0C}
         TERMINAL_COLOR15=${scheme.palette.base07}
-
 
         BTN_BG=${scheme.palette.base02}
         BTN_FG=${scheme.palette.base06}
