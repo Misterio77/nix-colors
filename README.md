@@ -213,25 +213,33 @@ real soon, as well as converting colors between hex and decimal. Stay tuned!
 
 ## Contributed functions
 
-We also have a few opinionated functions for some common scheme usecases: such
-as generating schemes from an image, generating an image from a scheme... You get
-the idea.
+We also have a few opinionated functions for generating themes, or schemes from
+pictures & vice versa.
 
 These nifty pals are listed (and documented) at
 [`lib/contrib/default.nix`](lib/contrib/default.nix). They are exposed at
 `nix-colors.lib.contrib`.
 
 Do note these require `nixpkgs`, however. You should pass your `pkgs` instance
-to `nix-colors.lib.contrib` to use them. For example:
+to `nix-colors.lib.contrib` to use them. For example, when using a wallpaper to generate a GTK theme:
 ```nix
 { pkgs, nix-colors, ... }:
 
 let
-  nix-colors-lib = nix-colors.lib.contrib { inherit pkgs; };
-in {
-  colorScheme = nix-colors-lib.colorSchemeFromPicture {
+  inherit (nix-colors.lib.contrib { inherit pkgs; })
+    colorSchemeFromPicture gtkThemeFromScheme;
+
+  colorScheme = colorSchemeFromPicture {
     path = ./wallpapers/example.png;
     variant = "light";
+  };
+in {
+  gtk = {
+    enable = true;
+    theme = {
+      name = "${colorScheme.slug}";
+      package = gtkThemeFromScheme { scheme = colorScheme; };
+    };
   };
 }
 ```
