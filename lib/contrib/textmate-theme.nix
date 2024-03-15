@@ -45,7 +45,7 @@ let
         note: Supported types are: ${lib.concatStringsSep ", " (builtins.attrNames handlers)}.
       '';
 
-  colorsDict = with scheme.colors; {
+  colorsDict = with scheme.palette; {
     name = "Generated base16 theme based on ${scheme.name}";
     semanticClass = "theme.base16.${scheme.slug}";
     colorSpaceName = "sRGB";
